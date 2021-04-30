@@ -1,0 +1,58 @@
+{
+    "type": "object",
+    "properties": {
+        "encapsulation": {
+            "type": "string",
+            "enum": [
+                "Q-in-Q",
+                "Mac-in-Mac",
+                "VLAN"
+            ]
+        },
+        "id": {
+            "type": "string"
+        },
+        "label": {
+            "type": "string",
+            "enum": [
+                "vlan"
+            ]
+        },
+        "label_range": {
+            "type": "array",
+            "items": {
+                "type": "array",
+                "minItems": 1,
+                "maxItems": 4096,
+                "uniqueItems": true,
+                "items": {
+                    "type": "string"
+                }
+            }
+        },
+        "node": {
+            "$ref": "repository://Node"
+        },
+        "short_name": {
+            "type": "string"
+        },
+        "status": {
+            "type": "boolean"
+        },
+        "swapping_capability": {
+            "type": "string",
+            "enum": [
+                "vlan"
+            ]
+        },
+        "type": {
+            "type": "string",
+            "enum": [
+                "10GE",
+                "1GE",
+                "100GE"
+            ]
+        }
+    },
+    "title": "Port"
+}

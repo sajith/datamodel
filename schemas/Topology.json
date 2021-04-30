@@ -1,0 +1,30 @@
+{
+    "type": "object",
+    "properties": {
+        "links": {
+            "type": "array",
+            "items": [
+                {
+                    "$ref": "repository://Link"
+                }
+            ]
+        },
+        "nodes": {
+            "type": "array",
+            "items": [
+                {
+                    "$ref": "repository://Node"
+                }
+            ]
+        },
+        "time_stamp": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "version": {
+            "type": "number",
+            "minimum": 0
+        }
+    },
+    "title": "Topology"
+}

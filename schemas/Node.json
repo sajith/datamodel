@@ -1,0 +1,34 @@
+{
+    "type": "object",
+    "properties": {
+        "Ports": {
+            "type": "array",
+            "items": [
+                {
+                    "$ref": "#/definitions/Port"
+                }
+            ]
+        },
+        "id": {
+            "type": "string"
+        },
+        "location": {
+            "$ref": "repository://Location"
+        },
+        "name": {
+            "type": "string"
+        },
+        "ports": {
+            "type": "array",
+            "items": [
+                {
+                    "$ref": "repository://Port"
+                }
+            ]
+        },
+        "short_name": {
+            "type": "string"
+        }
+    },
+    "title": "Node"
+}
