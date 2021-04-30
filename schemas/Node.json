@@ -1,14 +1,6 @@
 {
     "type": "object",
     "properties": {
-        "Ports": {
-            "type": "array",
-            "items": [
-                {
-                    "$ref": "#/definitions/Port"
-                }
-            ]
-        },
         "id": {
             "type": "string"
         },
