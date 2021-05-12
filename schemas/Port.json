@@ -1,6 +1,26 @@
 {
     "type": "object",
     "properties": {
+        "id": {
+            "type": "string"
+        },
+        "short_name": {
+            "type": "string"
+        },
+        "name": {
+            "type": "string"
+        },
+        "node": {
+            "$ref": "repository://Node"
+        },
+        "type": {
+            "type": "string",
+            "enum": [
+                "10GE",
+                "1GE",
+                "100GE"
+            ]
+        },
         "encapsulation": {
             "type": "string",
             "enum": [
@@ -9,10 +29,13 @@
                 "VLAN"
             ]
         },
-        "id": {
-            "type": "string"
-        },
         "label": {
+            "type": "string",
+            "enum": [
+                "vlan"
+            ]
+        },
+        "swapping_capability": {
             "type": "string",
             "enum": [
                 "vlan"
@@ -30,28 +53,8 @@
                 }
             }
         },
-        "node": {
-            "$ref": "repository://Node"
-        },
-        "short_name": {
-            "type": "string"
-        },
         "status": {
             "type": "boolean"
-        },
-        "swapping_capability": {
-            "type": "string",
-            "enum": [
-                "vlan"
-            ]
-        },
-        "type": {
-            "type": "string",
-            "enum": [
-                "10GE",
-                "1GE",
-                "100GE"
-            ]
         }
     },
     "title": "Port"

@@ -1,6 +1,9 @@
 {
     "type": "object",
     "properties": {
+        "id": {
+            "type": "string"
+        },
         "links": {
             "type": "array",
             "items": [
@@ -8,6 +11,9 @@
                     "$ref": "repository://Link"
                 }
             ]
+        },
+        "name": {
+            "type": "string"
         },
         "nodes": {
             "type": "array",
@@ -24,6 +30,9 @@
         "version": {
             "type": "number",
             "minimum": 0
+        },
+        "domain_service": {
+            "$ref": "repository://Service"
         }
     },
     "title": "Topology"

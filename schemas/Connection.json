@@ -1,6 +1,37 @@
 {
     "type": "object",
     "properties": {
+        "id": {
+            "type": "string"
+        },
+        "name": {
+            "type": "string"
+        },
+        "class": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 7
+        },
+        "ingress_port": {
+            "$ref": "repository://Port"
+        },
+        "egress_port": {
+            "$ref": "repository://Port"
+        },
+        "end_time": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "start_time": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "multi_path": {
+            "type": "boolean"
+        },
+        "preempt": {
+            "type": "boolean"
+        },
         "backup_path_type": {
             "type": "string",
             "enum": [
@@ -10,35 +41,26 @@
                 "3"
             ]
         },
-        "bandwidth_measured": {
-            "type": "number",
-            "minimum": 1,
-            "maximum": 1000000
+        "exclusive_links": {
+            "type": "array",
+            "items": [
+                {
+                    "$ref": "#/definitions/Link"
+                }
+            ]
+        },
+        "inclusive_links": {
+            "type": "array",
+            "items": {
+                "$ref": "repository://Link"
+            }
         },
         "bandwidth_required": {
             "type": "number",
             "minimum": 1,
             "maximum": 1000000
         },
-        "class": {
-            "type": "integer",
-            "minimum": 0,
-            "maximum": 7
-        },
-        "egress_port": {
-            "$ref": "repository://Port"
-        },
-        "end_time": {
-            "type": "string",
-            "format": "date-time"
-        },
-        "id": {
-            "type": "string"
-        },
-        "ingress_port": {
-            "$ref": "repository://Port"
-        },
-        "latency_measured": {
+        "bandwidth_measured": {
             "type": "number",
             "minimum": 1,
             "maximum": 1000000
@@ -48,19 +70,15 @@
             "minimum": 1,
             "maximum": 1000000
         },
-        "links": {
-            "type": "array",
-            "items": [
-                {
-                    "$ref": "#/definitions/Link"
-                }
-            ]
+        "latency_measured": {
+            "type": "number",
+            "minimum": 1,
+            "maximum": 1000000
         },
-        "multi_path": {
-            "type": "boolean"
-        },
-        "name": {
-            "type": "string"
+        "packetloss_required": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 100
         },
         "packetloss_measured": {
             "type": "number",
@@ -74,18 +92,6 @@
                     "$ref": "repository://Path"
                 }
             ]
-        },
-        "pocketless_required": {
-            "type": "number",
-            "minimum": 0,
-            "maximum": 100
-        },
-        "preempt": {
-            "type": "boolean"
-        },
-        "start_time": {
-            "type": "string",
-            "format": "date-time"
         }
     },
     "title": "Connection"
