@@ -40,6 +40,11 @@
             "type": "number",
             "minimum": 0,
             "maximum": 100
+        },
+        "availability": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 100
         }
     },
     "title": "Link"
