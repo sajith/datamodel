@@ -53,6 +53,11 @@
                 }
             }
         },
+        "mtu": {
+            "type": "number",
+            "minimum": 1000,
+            "maximum": 10000
+        },
         "status": {
             "type": "string",
             "enum": [
