@@ -54,7 +54,11 @@
             }
         },
         "status": {
-            "type": "boolean"
+            "type": "string",
+            "enum": [
+                "up",
+                "down"
+            ]
         }
     },
     "title": "Port"
