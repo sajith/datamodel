@@ -16,6 +16,9 @@
         "inter_domain": {
             "type": "boolean"
         },
+        "link_to": {
+            "$ref": "repository://Port"
+        },
         "type": {
             "type": "string",
             "enum": [
