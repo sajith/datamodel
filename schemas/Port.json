@@ -11,7 +11,7 @@
             "type": "string"
         },
         "node": {
-            "$ref": "repository://Node"
+            "type": "string"
         },
         "inter_domain": {
             "type": "boolean"
