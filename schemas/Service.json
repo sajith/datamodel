@@ -19,6 +19,23 @@
                     }
                 }
             ]
+        },
+        "private_attributes": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "monitoring_capability": {
+            "anyOf": [
+                {
+                    "enum": [
+                        "INT",
+                        "JTI",
+                        "counters"
+                    ]
+                }
+            ]
         }
     },
     "title": "Service"

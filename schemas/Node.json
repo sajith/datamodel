@@ -20,6 +20,12 @@
                     "$ref": "repository://Port"
                 }
             ]
+        },
+        "private_attibutes": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
         }
     },
     "title": "Node"

@@ -4,10 +4,10 @@
         "id": {
             "type": "string"
         },
-        "short_name": {
+        "name": {
             "type": "string"
         },
-        "name": {
+        "short_name": {
             "type": "string"
         },
         "ports": {
@@ -20,6 +20,10 @@
                     "$ref": "repository://Port"
                 }
             ]
+        },
+        "time_stamp": {
+            "type": "string",
+            "format": "date-time"
         },
         "total_bandwidth": {
             "type": "number",
@@ -45,6 +49,23 @@
             "type": "number",
             "minimum": 0,
             "maximum": 100
+        },
+        "private_attributes": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "measurement_period": {
+            "type": "object",
+            "properties": {
+                "time_unit": {
+                    "type": "string"
+                },
+                "period": {
+                    "type": "number"
+                }
+            }
         }
     },
     "title": "Link"

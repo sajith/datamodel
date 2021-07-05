@@ -70,6 +70,12 @@
                 "up",
                 "down"
             ]
+        },
+        "private_attributes": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
         }
     },
     "title": "Port"

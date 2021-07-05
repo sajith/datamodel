@@ -4,24 +4,8 @@
         "id": {
             "type": "string"
         },
-        "links": {
-            "type": "array",
-            "items": [
-                {
-                    "$ref": "repository://Link"
-                }
-            ]
-        },
         "name": {
             "type": "string"
-        },
-        "nodes": {
-            "type": "array",
-            "items": [
-                {
-                    "$ref": "repository://Node"
-                }
-            ]
         },
         "time_stamp": {
             "type": "string",
@@ -33,6 +17,28 @@
         },
         "domain_service": {
             "$ref": "repository://Service"
+        },
+        "private_attributes": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "nodes": {
+            "type": "array",
+            "items": [
+                {
+                    "$ref": "repository://Node"
+                }
+            ]
+        },
+        "links": {
+            "type": "array",
+            "items": [
+                {
+                    "$ref": "repository://Link"
+                }
+            ]
         }
     },
     "title": "Topology"
