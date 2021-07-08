@@ -1,13 +1,18 @@
 {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Port",
     "type": "object",
     "properties": {
         "id": {
+            "description": "This is supposed to be an unique identifier",
             "type": "string"
         },
         "short_name": {
+            "description": "A convinient short name",
             "type": "string"
         },
         "name": {
+            "description": "This is supposed to be an urn",
             "type": "string"
         },
         "node": {
@@ -17,7 +22,7 @@
             "type": "boolean"
         },
         "link_to": {
-            "$ref": "repository://Port"
+            "$ref": "port.json"
         },
         "type": {
             "type": "string",
@@ -78,5 +83,5 @@
             }
         }
     },
-    "title": "Port"
+    "required": ["id", "name", "node", "status"]
 }

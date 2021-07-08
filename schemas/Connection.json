@@ -1,4 +1,6 @@
 {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Connection",
     "type": "object",
     "properties": {
         "id": {
@@ -13,10 +15,10 @@
             "maximum": 7
         },
         "ingress_port": {
-            "$ref": "repository://Port"
+            "$ref": "Port"
         },
         "egress_port": {
-            "$ref": "repository://Port"
+            "$ref": "Port"
         },
         "end_time": {
             "type": "string",
@@ -45,14 +47,14 @@
             "type": "array",
             "items": [
                 {
-                    "$ref": "#/definitions/Link"
+                    "$ref": "Link"
                 }
             ]
         },
         "inclusive_links": {
             "type": "array",
             "items": {
-                "$ref": "repository://Link"
+                "$ref": "Link"
             }
         },
         "bandwidth_required": {
@@ -99,7 +101,7 @@
             "type": "array",
             "items": [
                 {
-                    "$ref": "repository://Path"
+                    "$ref": "Path"
                 }
             ]
         },
@@ -108,5 +110,5 @@
             "enum": []
         }
     },
-    "title": "Connection"
+    "required": ["id", "name", "ingress_port", "egress_port"]
 }

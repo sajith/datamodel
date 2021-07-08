@@ -1,4 +1,6 @@
 {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Topology",
     "type": "object",
     "properties": {
         "id": {
@@ -16,7 +18,7 @@
             "minimum": 0
         },
         "domain_service": {
-            "$ref": "repository://Service"
+            "$ref": "Service"
         },
         "private_attributes": {
             "type": "array",
@@ -28,7 +30,7 @@
             "type": "array",
             "items": [
                 {
-                    "$ref": "repository://Node"
+                    "$ref": "Node"
                 }
             ]
         },
@@ -36,10 +38,10 @@
             "type": "array",
             "items": [
                 {
-                    "$ref": "repository://Link"
+                    "$ref": "Link"
                 }
             ]
         }
     },
-    "title": "Topology"
+    "required": ["id", "name", "version","time_stamp","nodes", "links"]
 }

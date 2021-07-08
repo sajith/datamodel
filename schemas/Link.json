@@ -1,4 +1,6 @@
 {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Link",
     "type": "object",
     "properties": {
         "id": {
@@ -17,7 +19,7 @@
             "uniqueItems": true,
             "items": [
                 {
-                    "$ref": "repository://Port"
+                    "$ref": "Port"
                 }
             ]
         },
@@ -51,12 +53,14 @@
             "maximum": 100
         },
         "private_attributes": {
+            "description": "This property is used to define a list of private properties that will not be exposed to outside users of SDX",
             "type": "array",
             "items": {
                 "type": "string"
             }
         },
         "measurement_period": {
+            "description": "This perperty is used to define the time period for measurement metrics, for example, 1 second, 1 day",
             "type": "object",
             "properties": {
                 "time_unit": {
@@ -68,5 +72,5 @@
             }
         }
     },
-    "title": "Link"
+    "required": ["id", "name", "ports"]
 }
