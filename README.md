@@ -8,9 +8,9 @@
 
 1. Ensure you're able to run the existing code in your own [development environment](#setup).
 2. Create a descriptive [GitHub issue](https://github.com/atlanticwave-sdx/datamodel/issues) that outlines what feature you plan to contribute.
-3. Clone the repository, and start from the most recent version of the [develop branch](https://github.com/atlanticwave-sdx/datamodel.git).
+3. Clone the repository, and start from the most recent version of the [develop branch](https://github.com/atlanticwave-sdx/datamodel/tree/develop).
 4. Name your branch using the Github issue number as a prefix along with a brief name that corresponds to your feature (e.g., `8-how-to-contribute`).
-5. Once satisfied with your completed and tested work, submit a [pull request](https://github.com/atlanticwave-sdx/datamodel.git) against the **develop** branch so that your code can be reviewed by the team.
+5. Once satisfied with your completed and tested work, submit a [pull request](https://github.com/atlanticwave-sdx/datamodel/pulls) against the **develop** branch so that your code can be reviewed by the team.
 
 Notes:
 
