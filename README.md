@@ -43,4 +43,12 @@ This set of updates mainly come from the domain monitoring system which is suppo
 ## Topology description schemas
 There are defined in the *schema* subfolder. Some attributes of each objects are requied (Can be found in the API definition) while some are optional. Two attributes are worth of mentioning: (1) In the *service* object, there is a *vender* attribute for the domain to list device vendors that are NOT in its domain, (2) in the topology, link, node, and port objects, there is an *private* attibute for the domain to list attributes that need to kept private.:wq
   
+## Unittest
+```
+python -m unittest -v test.test_topology_handler
+```
+```
+python -m unittest -v test.test_topology_validator
+```
+
 ## <a name="accompany"></a>Accompanying AW-SDX Projects
