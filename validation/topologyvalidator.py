@@ -3,10 +3,10 @@
 Synopsis: A validation class to evaluate that the supplied Topology object contains expected data format
 """
 from collections.abc import Iterable
-from grenml.models import Topology, Institution, Node, Link, GLOBAL_INSTITUTION_ID
-from grenml.models.meta import GRENMLObject, Location, Lifetime
-from re import match
+from models import Topology, Node, Link, Location
+
 ISO_FORMAT = r'\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}[-+]\d{2}:\d{2}'
+
 class TopologyValidator:
     """
     The validation class made to validate a Topology
@@ -36,7 +36,7 @@ class TopologyValidator:
         return errors
     def _validate_topology(self, topology: Topology, parent=None):
         """
-        Validate that the topology provided meets the XSD standards.
+        Validate that the topology provided meets the JSON schema.
         A topology must have the following:
          - It must meet object default standards.
          - It must have a Primary owner assigned
