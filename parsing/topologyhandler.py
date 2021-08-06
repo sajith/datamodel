@@ -24,14 +24,15 @@ class TopologyHandler():
         try:
             id = data['id']
             name=data['name']
+            service=data['domain_service']
             version=data['version']
             time_stamp=data['time_stamp']
             nodes=data['nodes']
             links=data['links']
-        except:
-            raise MissingAttributeException()
+        except KeyError as e:
+            raise MissingAttributeException(e.args[0],e.args[0])
 
-        topology=Topology(id=id, name=name, version=version, time_stamp=time_stamp, nodes=nodes, links=links)
+        topology=Topology(id=id, name=name, domain_service = service, version=version, time_stamp=time_stamp, nodes=nodes, links=links)
 
         return topology
 
