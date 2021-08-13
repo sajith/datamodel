@@ -4,9 +4,11 @@
     "type": "object",
     "properties": {
         "id": {
+            "description": "This is supposed to be an unique identifier, starting with urn:ogf:networking:global",
             "type": "string"
         },
         "name": {
+            "description": "This is supposed to be a readable name",
             "type": "string"
         },
         "time_stamp": {
@@ -14,8 +16,9 @@
             "format": "date-time"
         },
         "version": {
+            "description": "This is supposed to be in ISO format",
             "type": "number",
-            "minimum": 0
+            "minimum": 0,
         },
         "domain_service": {
             "$ref": "Service"

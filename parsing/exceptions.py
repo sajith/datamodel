@@ -10,7 +10,7 @@ class MissingAttributeException(DataModelException):
     """
 
     def __init__(self, attribute_name, expected_attribute):
-        self.element_name = attribute_name
+        self.attribute_name = attribute_name
         self.expected_attribute = expected_attribute
 
     def __str__(self):
@@ -18,4 +18,6 @@ class MissingAttributeException(DataModelException):
             self.expected_attribute,
             self.attribute_name,
         )
+
+
 

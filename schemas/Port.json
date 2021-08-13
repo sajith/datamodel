@@ -12,7 +12,7 @@
             "type": "string"
         },
         "name": {
-            "description": "This is supposed to be an urn",
+            "description": "This is supposed to be a full name",
             "type": "string"
         },
         "node": {

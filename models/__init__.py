@@ -14,11 +14,11 @@
 from __future__ import absolute_import
 
 # import models into model package
-from datamodel.models.connection import Connection
-from datamodel.models.link import Link
-from datamodel.models.link_measurement_period import LinkMeasurementPeriod
-from datamodel.models.location import Location
-from datamodel.models.node import Node
-from datamodel.models.port import Port
-from datamodel.models.service import Service
-from datamodel.models.topology import Topology
+from .connection import Connection
+from .link import Link
+from .link_measurement_period import LinkMeasurementPeriod
+from .location import Location
+from .node import Node
+from .port import Port
+from .service import Service
+from .topology import Topology
