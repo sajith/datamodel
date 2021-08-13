@@ -53,30 +53,25 @@ class Connection(object):
 
     def __init__(self, id=None, name=None, ingress_port=None, egress_port=None, quantity=None, start_time=None, end_time=None, status=None, complete=False):  # noqa: E501
         """Connection - a model defined in Swagger"""  # noqa: E501
-        self._id = None
-        self._name = None
-        self._ingress_port = None
-        self._egress_port = None
         self._quantity = None
         self._start_time = None
         self._end_time = None
         self._status = None
         self._complete = None
-        self.discriminator = None
-        self.id = id
-        self.name = name
-        self.ingress_port = ingress_port
-        self.egress_port = egress_port
+        self._id = id
+        self._name = name
+        self._ingress_port = ingress_port
+        self._egress_port = egress_port
         if quantity is not None:
-            self.quantity = quantity
+            self._quantity = quantity
         if start_time is not None:
-            self.start_time = start_time
+            self._start_time = start_time
         if end_time is not None:
-            self.end_time = end_time
+            self._end_time = end_time
         if status is not None:
-            self.status = status
+            self._status = status
         if complete is not None:
-            self.complete = complete
+            self._complete = complete
 
     @property
     def id(self):

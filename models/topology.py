@@ -53,25 +53,19 @@ class Topology(object):
 
     def __init__(self, id=None, name=None, domain_service=None, version=None, time_stamp=None, nodes=None, links=None, private_attributes=None):  # noqa: E501
         """Topology - a model defined in Swagger"""  # noqa: E501
-        self._id = None
-        self._name = None
+
         self._domain_service = None
-        self._version = None
-        self._time_stamp = None
-        self._nodes = None
-        self._links = None
         self._private_attributes = None
-        self.discriminator = None
-        self.id = id
-        self.name = name
+        self._id = id
+        self._name = name
         if domain_service is not None:
-            self.domain_service = domain_service
-        self.version = version
-        self.time_stamp = time_stamp
-        self.nodes = nodes
-        self.links = links
+            self._domain_service = domain_service
+        self._version = version
+        self._time_stamp = time_stamp
+        self._nodes = nodes
+        self._links = links
         if private_attributes is not None:
-            self.private_attributes = private_attributes
+            self._private_attributes = private_attributes
 
     @property
     def id(self):
