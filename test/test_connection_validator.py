@@ -15,9 +15,8 @@ class TestConnectionValidator(unittest.TestCase):
         print("Import Connection:")
         self.handler.import_connection(CONNECTION_P2P)
         conn = self.handler.connection
-        print(conn)
-        validator = ConnectionValidator() 
-        validator.set_connection(conn)
+        self.validator = ConnectionValidator() 
+        self.validator.set_connection(conn)
 
     def tearDown(self):
         pass

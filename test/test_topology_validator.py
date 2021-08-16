@@ -21,7 +21,7 @@ class TestTopologyValidator(unittest.TestCase):
         try:
             print("Import Topology:")
             self.handler.import_topology()
-            self.validator.topology(self.handler.topology)
+            self.validator.set_topology(self.handler.topology)
             self.validator.is_valid()
             print(self.handler.topology)
         except DataModelException as e:

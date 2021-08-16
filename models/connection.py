@@ -38,7 +38,6 @@ class Connection(object):
         'start_time': 'datetime',
         'end_time': 'datetime',
         'status': 'str',
-        'complete': 'bool'
     }
 
     attribute_map = {
@@ -50,7 +49,6 @@ class Connection(object):
         'start_time': 'start_time',
         'end_time': 'end_time',
         'status': 'status',
-        'complete': 'complete'
     }
 
     def __init__(self, id=None, name=None, ingress_port=None, egress_port=None, quantity=None, start_time=None, end_time=None, status=None, complete=False):  # noqa: E501
@@ -59,11 +57,10 @@ class Connection(object):
         self._start_time = None
         self._end_time = None
         self._status = None
-        self._complete = None
         self._id = id
         self._name = name
-        self._ingress_port = ingress_port
-        self._egress_port = egress_port
+        self.set_ingress_port(ingress_port)
+        self.set_egress_port(egress_port)
         if quantity is not None:
             self._quantity = quantity
         if start_time is not None:
@@ -72,8 +69,6 @@ class Connection(object):
             self._end_time = end_time
         if status is not None:
             self._status = status
-        if complete is not None:
-            self._complete = complete
 
     @property
     def id(self):
@@ -131,8 +126,8 @@ class Connection(object):
         """
         return self._ingress_port
 
-    @ingress_port.setter
-    def ingress_port(self, ingress_port):
+    #setter
+    def set_ingress_port(self, ingress_port):
         """Sets the ingress_port of this Connection.
 
 
@@ -143,7 +138,9 @@ class Connection(object):
             raise ValueError("Invalid value for `ingress_port`, must not be `None`")  # noqa: E501
 
         port_handler = PortHandler()
-        self._ingress_port = port_handler.import_port_data(self, ingress_port)
+        self._ingress_port = port_handler.import_port_data(ingress_port)
+        
+        return self.ingress_port
 
     @property
     def egress_port(self):
@@ -155,8 +152,8 @@ class Connection(object):
         """
         return self._egress_port
 
-    @egress_port.setter
-    def egress_port(self, egress_port):
+    #setter
+    def set_egress_port(self, egress_port):
         """Sets the egress_port of this Connection.
 
 
@@ -167,7 +164,10 @@ class Connection(object):
             raise ValueError("Invalid value for `egress_port`, must not be `None`")  # noqa: E501
 
         port_handler = PortHandler()
-        self._egress_port = port_handler.import_port_data(self, egress_port)
+        self._egress_port = port_handler.import_port_data(egress_port)
+
+        return self.egress_port
+
 
     @property
     def quantity(self):
@@ -260,27 +260,6 @@ class Connection(object):
             )
 
         self._status = status
-
-    @property
-    def complete(self):
-        """Gets the complete of this Connection.  # noqa: E501
-
-
-        :return: The complete of this Connection.  # noqa: E501
-        :rtype: bool
-        """
-        return self._complete
-
-    @complete.setter
-    def complete(self, complete):
-        """Sets the complete of this Connection.
-
-
-        :param complete: The complete of this Connection.  # noqa: E501
-        :type: bool
-        """
-
-        self._complete = complete
 
     def to_dict(self):
         """Returns the model properties as a dict"""

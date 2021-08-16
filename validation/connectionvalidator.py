@@ -9,34 +9,31 @@ from re import match
 
 ISO_FORMAT = r'\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}[-+]\d{2}:\d{2}'
 
-class ConnectionValidator:
+class ConnectionValidator():
     """
     The validation class made to validate a Connection request
     """
     def __init__(self):
         super().__init__()
-        self._connection = None
+        self.connection = None
 
-    @property
-    def connection(self):
-        return self._connection
+    def get_connection(self):
+        return self.connection
 
-    @connection.setter
     def set_connection(self, conn):
         if not isinstance(conn, Connection):
             raise ValueError('The Validator must be passed a Connection object')
-        self._connection = conn
+        self.connection = conn
 
-    @property
     def is_valid(self):
-        errors = self.validate(self._connection, raise_error=True)
+        errors = self.validate(self.connection, raise_error=True)
         for error in errors:
             print(error)
         return not bool(errors)
 
     def validate(self, conn=None, raise_error=True):
         if not conn and self._connection:
-            conn = self._connection
+            conn = self.connection
         errors = self._validate_connection(conn)
         if errors and raise_error:
             raise ValueError('\n'.join(errors))
@@ -54,14 +51,13 @@ class ConnectionValidator:
         errors = []
         errors += self._validate_object_defaults(conn)
         
-        for ingress_port in conn.ingress_port:
-            errors += self._validate_port(ingress_port, conn)
-        for egress_port in conn.egress_port:
-            errors += self._validate_port(egress_port, conn)
-        for start_time in conn.start_time:
-            errors += self._validate_time(start_time, conn)
-        for end_time in conn.end_time:
-            errors += self._validate_time(end_time, conn)
+        errors += self._validate_port(conn.ingress_port, conn)
+        
+        errors += self._validate_port(conn.egress_port, conn)
+        
+        errors += self._validate_time(conn.start_time, conn)
+        
+        errors += self._validate_time(conn.end_time, conn)
         return errors
 
     def _validate_port(self, port: Port, conn: Connection):
@@ -75,11 +71,12 @@ class ConnectionValidator:
         :param topology: The Topology.
         :return: A list of any issues in the data.
         """
+    
         errors = []
-        errors += self._validate_object_defaults(port)
-
         if not port:
             errors.append('{} must exist'.format(port.__class__.__name__))
+        
+        errors += self._validate_object_defaults(port)
 
         """
         node = find_node(port,topology)
@@ -92,7 +89,7 @@ class ConnectionValidator:
         """
         return errors
 
-    def _validate_time(self, time: datetime, conn: Connection):
+    def _validate_time(self, time: str, conn: Connection):
         """
         Validate that the time provided meets the XSD standards.
         A port must have the following:
@@ -103,7 +100,13 @@ class ConnectionValidator:
         :return: A list of any issues in the data.
         """
         errors = []
-        pass
+        if not match(ISO_FORMAT, time):
+            errors.append(
+                '{} time needs to be in full ISO format'.format(
+                    time,
+                )
+            )
+        return errors
 
     def _validate_object_defaults(self, sdx_object):
         """

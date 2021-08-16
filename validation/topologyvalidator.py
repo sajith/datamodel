@@ -14,16 +14,16 @@ class TopologyValidator:
     The validation class made to validate a Topology
     """
     def __init__(self):
-        self._topology = None
-    @property
-    def topology(self):
-        return self._topology
-    @topology.setter
-    def topology(self, topology):
+        self.topology = None
+    
+    def get_topology(self):
+        return self.topology
+   
+    def set_topology(self, topology):
         if not isinstance(topology, Topology):
             raise ValueError('The Validator must be passed a Topology object')
-        self._topology = topology
-    @property
+        self.topology = topology
+    
     def is_valid(self):
         errors = self.validate(self.topology, raise_error=False)
         for error in errors:
@@ -76,7 +76,7 @@ class TopologyValidator:
         :return: A list of any issues in the data.
         """
         errors = []
-        errors += self._validate_object_defaults(service, topology)
+        errors += self._validate_object_defaults(service)
 
         return errors
 
@@ -181,31 +181,23 @@ class TopologyValidator:
         :return: A list of any issues in the data.
         """
         errors = []
-        if not sdx_object.id:
+        if not sdx_object._id:
             errors.append('{} must have an ID'.format(sdx_object.__class__.__name__))
-        if not isinstance(sdx_object.id, str):
+        if not isinstance(sdx_object._id, str):
             errors.append('{} ID must be a string'.format(sdx_object.__class__.__name__))
-        if not sdx_object.name:
+        if not sdx_object._name:
             errors.append(
                 '{} {} must have a name'.format(
-                    sdx_object.__class__.__name__, sdx_object.id,
+                    sdx_object.__class__.__name__, sdx_object._name,
                 )
             )
-        if not isinstance(sdx_object.name, str):
+        if not isinstance(sdx_object._name, str):
             errors.append(
                 '{} {} name must be a String'.format(
-                    sdx_object.__class__.__name__, sdx_object.id,
+                    sdx_object.__class__.__name__, sdx_object._name,
                 )
             )
-        if sdx_object.short_name:
-            if not isinstance(sdx_object.short_name, str):
-                errors.append(
-                    '{} {} Short name must be a string'.format(
-                        sdx_object.__class__.__name__, sdx_object.id,
-                    )
-                )
 
-        errors += self._validate_additional_properties(sdx_object)
         return errors
 
     def _validate_location(self, location: Location, enforce_coordinates=True):
