@@ -10,7 +10,7 @@ CONNECTION_P2P = './test/p2p.json'
 class TestConnectionHandler(unittest.TestCase):
 
     def setUp(self):
-        self.handler = ConnectionHandler(CONNECTION_P2P)  # noqa: E501
+        self.handler = ConnectionHandler()  # noqa: E501
     def tearDown(self):
         pass
 

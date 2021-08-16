@@ -53,15 +53,14 @@ class Node(object):
         self._location = None
         self._ports = None
         self._private_attributes = None
-        self.discriminator = None
-        self.id = id
-        self.name = name
+        self._id = id
+        self._name = name
         if short_name is not None:
-            self.short_name = short_name
-        self.location = location
-        self.ports = ports
+            self._short_name = short_name
+        self._location = location
+        self._ports = ports
         if private_attributes is not None:
-            self.private_attributes = private_attributes
+            self._private_attributes = private_attributes
 
     @property
     def id(self):

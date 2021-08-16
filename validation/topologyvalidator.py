@@ -46,7 +46,6 @@ class TopologyValidator:
          - It must have its primary owner in its institution list
          - It must have the global institution in the institution list
         :param topology: The topology being evaluated
-        :param parent: The Parent Topology. If this topology is the top level, then the parent should be None.
         :return: A list of any issues in the data.
         """
         errors = []

@@ -2,29 +2,24 @@ import json
 from models.connection import Connection
 from .exceptions import MissingAttributeException
 
-MANIFEST_FILE = None
-
 class ConnectionHandler():
 
     """"
     Handler for parsing the connection request descritpion in json 
     """
 
-    def __init__(self,connection_data):
+    def __init__(self):
         super().__init__()
         self.connection = None
-
-        self._id = None
-        self._name = None
-        self._ingress_port = None
-        self._egress_port = None
 
     def import_connection_data(self, data):
         try:
             id = data['id']
             name=data['name']
-            start=data['start_time']
-            end=data['end_time']
+            if 'start_time' in data.keys():
+                start=data['start_time']
+            if 'end_time' in data.keys():    
+                end=data['end_time']
             ingress=data['ingress_port']
             egress=data['egress_port']
         except KeyError as e:

@@ -71,28 +71,27 @@ class Link(object):
         self._private_attributes = None
         self._time_stamp = None
         self._measurement_period = None
-        self.discriminator = None
-        self.id = id
-        self.name = name
+        self._id = id
+        self._name = name
         if short_name is not None:
-            self.short_name = short_name
+            self._short_name = short_name
         self.ports = ports
         if total_bandwidth is not None:
-            self.total_bandwidth = total_bandwidth
+            self._total_bandwidth = total_bandwidth
         if available_bandwidth is not None:
-            self.available_bandwidth = available_bandwidth
+            self._available_bandwidth = available_bandwidth
         if latency is not None:
-            self.latency = latency
+            self._latency = latency
         if packet_loss is not None:
-            self.packet_loss = packet_loss
+            self._packet_loss = packet_loss
         if availability is not None:
-            self.availability = availability
+            self._availability = availability
         if private_attributes is not None:
-            self.private_attributes = private_attributes
+            self._private_attributes = private_attributes
         if time_stamp is not None:
-            self.time_stamp = time_stamp
+            self._time_stamp = time_stamp
         if measurement_period is not None:
-            self.measurement_period = measurement_period
+            self._measurement_period = measurement_period
 
     @property
     def id(self):

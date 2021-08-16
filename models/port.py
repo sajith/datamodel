@@ -56,17 +56,20 @@ class Port(object):
         self._label_range = None
         self._status = None
         self._private_attributes = None
-        self.discriminator = None
-        self.id = id
-        self.name = name
+        self._id = id
+        self._name = name
         if short_name is not None:
-            self.short_name = short_name
-        self.node = node
+            self._short_name = short_name
+        self._node = node
         if label_range is not None:
-            self.label_range = label_range
-        self.status = status
+            self._label_range = label_range
+        self._status = status
         if private_attributes is not None:
-            self.private_attributes = private_attributes
+            self._private_attributes = private_attributes
+
+    def __init__(self, port:dict):
+        self.__init__(id=id, name=port['name'],short_name=port['short_name'], node=port['node'], 
+        label_range=port['label_range'], status=None, private_attributes=port['private_attributes'])
 
     @property
     def id(self):

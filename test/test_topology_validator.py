@@ -8,11 +8,11 @@ from parsing.exceptions import DataModelException
 
 TOPOLOGY_AMLIGHT = './test/amlight.json'
 
-class TopologyValidator(unittest.TestCase):
+class TestTopologyValidator(unittest.TestCase):
 
     def setUp(self):
         self.handler = TopologyHandler(TOPOLOGY_AMLIGHT)
-        self.validator = TopologyValidator()  # noqa: E501
+        self.validator = TopologyValidator()  
 
     def tearDown(self):
         pass
@@ -22,7 +22,7 @@ class TopologyValidator(unittest.TestCase):
             print("Import Topology:")
             self.handler.import_topology()
             self.validator.topology(self.handler.topology)
-            self.validator.isValid()
+            self.validator.is_valid()
             print(self.handler.topology)
         except DataModelException as e:
             print(e)

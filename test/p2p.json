@@ -1,0 +1,22 @@
+{
+    "id": "id",
+    "name": "AMLight",
+    "start_time": "2000-01-23T04:56:07.000Z",
+    "end_time": "2000-01-23T04:56:07.000Z",
+    "egress_port":
+    {
+        "id": "urn:sdx:port:amlight.net:Novi07:10",
+        "name": "10",
+        "short_name": "10",
+        "node": "urn:sdx:port:amlight.net:Novi07",
+        "status": "up"
+    },
+    "ingress_port":
+    {
+        "id": "urn:sdx:port:amlight.net:Novi06:9",
+        "name": "Novi06:9",
+        "short_name": "9",
+        "node": "urn:sdx:port:amlight.net:Novi06",
+        "status": "up"
+    }
+}
