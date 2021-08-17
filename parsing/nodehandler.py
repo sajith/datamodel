@@ -19,11 +19,13 @@ class NodeHandler():
             short_name=data['short_name']
             location=data['location']
             ports=data['ports']
-            private_attributes=data['private_attributes']
+            p_a=None
+            if 'private_attributes' in data.keys():
+                p_a=data['private_attributes']
         except KeyError as e:
             raise MissingAttributeException(e.args[0],e.args[0])
 
-        node=Node(id=id, name=name, short_name=short_name, location=location, ports=ports, private_attributes=private_attributes)
+        node=Node(id=id, name=name, short_name=short_name, location=location, ports=ports, private_attributes=p_a)
 
         return node
     

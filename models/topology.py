@@ -15,6 +15,8 @@ import re  # noqa: F401
 import six
 
 from parsing.servicehandler import ServiceHandler
+from parsing.nodehandler import NodeHandler
+from parsing.linkhandler import LinkHandler
 
 GLOBAL_INSTITUTION_ID = 'urn:ogf:networking:global'
 
@@ -63,8 +65,10 @@ class Topology(object):
             self._domain_service = self.set_domain_service(domain_service)
         self._version = version
         self._time_stamp = time_stamp
-        self._nodes = nodes
-        self._links = links
+        self._nodes=[]
+        self._links=[]
+        self._nodes = self.set_nodes(nodes)
+        self._links = self.set_links(links)
         if private_attributes is not None:
             self._private_attributes = private_attributes
 
@@ -113,6 +117,16 @@ class Topology(object):
             raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
 
         self._name = name
+
+    @property
+    def domain_service(self):
+        """Gets the name of this Topology.  # noqa: E501
+
+
+        :return: The name of this Topology.  # noqa: E501
+        :rtype: str
+        """
+        return self._domain_service
 
     def get_domain_service(self):
         """Gets the domain_service of this Topology.  # noqa: E501
@@ -185,6 +199,16 @@ class Topology(object):
 
         self._time_stamp = time_stamp
 
+    @property
+    def nodes(self):
+        """Gets the name of this Topology.  # noqa: E501
+
+
+        :return: The name of this Topology.  # noqa: E501
+        :rtype: str
+        """
+        return self._nodes
+
     def get_nodes(self):
         """Gets the nodes of this Topology.  # noqa: E501
 
@@ -204,10 +228,24 @@ class Topology(object):
         if nodes is None:
             raise ValueError("Invalid value for `nodes`, must not be `None`")  # noqa: E501
 
-        self._nodes = nodes
+        for node in nodes:
+            node_handler = NodeHandler()
+            node_obj = node_handler.import_node_data(node)
+            self._nodes.append(node_obj)
+        
+        return self.get_nodes()
 
     @property
     def links(self):
+        """Gets the name of this Topology.  # noqa: E501
+
+
+        :return: The name of this Topology.  # noqa: E501
+        :rtype: str
+        """
+        return self._links
+
+    def get_links(self):
         """Gets the links of this Topology.  # noqa: E501
 
 
@@ -216,18 +254,21 @@ class Topology(object):
         """
         return self._links
 
-    @links.setter
-    def links(self, links):
+    def set_links(self, links):
         """Sets the links of this Topology.
 
-
-        :param links: The links of this Topology.  # noqa: E501
+        :param links: The links of this Topology, in list of JSON str.  # noqa: E501
         :type: list[Link]
         """
         if links is None:
             raise ValueError("Invalid value for `links`, must not be `None`")  # noqa: E501
 
-        self._links = links
+        for link in links:
+            link_handler = LinkHandler()
+            link_obj = link_handler.import_link_data(link)
+            self._links.append(link_obj)
+        
+        return self.get_links()
 
     @property
     def private_attributes(self):

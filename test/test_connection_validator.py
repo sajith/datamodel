@@ -24,6 +24,7 @@ class TestConnectionValidator(unittest.TestCase):
     def testConnection(self):
         try:
             self.validator.is_valid()
+            print(self.validator.get_connection())
         except DataModelException as e:
             print(e)
             return False

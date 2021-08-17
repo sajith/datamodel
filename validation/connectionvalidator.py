@@ -57,9 +57,9 @@ class ConnectionValidator():
         
         errors += self._validate_port(conn.egress_port, conn)
         
-        errors += self._validate_time(conn.start_time, conn)
+        #errors += self._validate_time(conn.start_time, conn)
         
-        errors += self._validate_time(conn.end_time, conn)
+        #errors += self._validate_time(conn.end_time, conn)
         return errors
 
     def _validate_port(self, port: Port, conn: Connection):

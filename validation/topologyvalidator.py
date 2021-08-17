@@ -58,10 +58,9 @@ class TopologyValidator:
         errors += self._validate_service(service, topology)
         for node in topology.get_nodes():
             errors += self._validate_node(node, topology)
-        for link in topology.links:
+        for link in topology.get_links():
             errors += self._validate_link(link, topology)
-        for sub_topology in topology.topologies:
-            errors += self._validate_topology(sub_topology, topology)
+
         return errors
 
     def _validate_service(self, service: Service, topology: Topology):
@@ -128,7 +127,7 @@ class TopologyValidator:
         errors = []
         print(node)
         errors += self._validate_object_defaults(node)
-        errors += self._validate_location(node)
+        errors += self._validate_location(node.get_location())
 
         return errors
 
@@ -144,27 +143,23 @@ class TopologyValidator:
         :return: A list of any issues in the data.
         """
         errors = []
-        errors += self._validate_object_defaults(link, topology)
+        errors += self._validate_object_defaults(link)
 
-        if len(link._nodes) != 2:
+        if len(link._ports) != 2:
             errors.append(
-                'Link {} must connect between 2 Nodes. Currently {}'.format(
-                    link.id, str(link._nodes)
+                'Link {} must connect between 2 ports. Currently {}'.format(
+                    link.id, str(link._ports)
                 )
             )
-        for node in link._nodes:
-            if not isinstance(node, str):
+        for port in link._ports:
+            if not isinstance(port, str):
                 errors.append(
-                    'Link {} Node {} should be a string. Not {}'.format(
-                        link.id, node, node.__class__.__name__
+                    'Link {} Port {} should be a string. Not {}'.format(
+                        link.id, port, port.__class__.__name__
                     )
                 )
-            if topology and node not in topology.nodes:
-                errors.append(
-                    'Link {} listed node id {} does not exist in parent Topology {}'.format(
-                        link.id, node, topology.id
-                    )
-                )
+        #TODO: Check ports are in the current topology
+        
         return errors
 
     def _validate_object_defaults(self, sdx_object):
@@ -262,8 +257,8 @@ class TopologyValidator:
             )
 
         try:
-            if location.altitude:
-                float(location.altitude)
+            if location.latitude:
+                float(location.latitude)
         except ValueError:
             errors.append(
                 '{} {} Altitude must be a value that coordinates to a Floating point value'.format(
@@ -271,22 +266,17 @@ class TopologyValidator:
                 )
             )
 
-        if location.unlocode and not isinstance(location.unlocode, str):
+        if not location.address:
             errors.append(
-                '{} {} UN/LOCODE must be a string value'.format(location.__class__.__name__, location.id)
-            )
-        if isinstance(location.addresses, Iterable):
-            for address in location.addresses:
-                if not type(address) == str:
-                    errors.append(
-                        '{} {} Address {} must be a string'.format(
-                            location.__class__.__name__, location.id, address
-                        )
-                    )
-        else:
-            errors.append(
-                '{} {} Addresses should be a list of strings'.format(
-                    location.__class__.__name__, location.id
+                '{} {} Address must exist'.format(
+                    location.__class__.__name__, location._id
                 )
             )
+        if not type(location.address) == str:
+            errors.append(
+                '{} {} Address {} must be a string'.format(
+                    location.__class__.__name__, location._id, location.address
+                )
+            )
+
         return errors
