@@ -14,17 +14,23 @@ class ServiceHandler():
 
     def import_service_data(self, data):
         try:
-            id = data['id']
-            name=data['name']
-            start=data['start_time']
-            end=data['end_time']
-            ingress=data['ingress_port']
-            egress=data['egress_port']
+            owner=data['owner']
+            m_c=None;p_s=None;p_url=None;vendor=None;p_a=None
+            if 'monitoring_capability' in data.keys():
+                m_c = data['monitoring_capability']
+            if 'provisioning_system' in data.keys():
+                p_s=data['provisioning_system']
+            if 'provisioning_url' in data.keys():
+                p_url=data['provisioning_url']
+            if 'vendor' in data.keys():
+                vendor=data['vendor']
+            if 'private_attributes' in data.keys():
+                p_a=data['private_attributes']
         except KeyError as e:
             raise MissingAttributeException(e.args[0],e.args[0])
 
-        service=Service(id=id, name=name, start_time = start, end_time = end, ingress_port = ingress, egress_port = egress)
-
+        service=Service(monitoring_capability=m_c, owner=owner, private_attributes=p_a, provisioning_system=p_s, provisioning_url=p_url, vendor=vendor)
+        
         return service
     
     def import_service(self,file):

@@ -54,9 +54,9 @@ class TopologyValidator:
         if GLOBAL_INSTITUTION_ID not in topology.id:
             errors.append('Global Institution must be in Topology {}'.format(topology.id))
 
-        for service in topology.domain_service:
-            errors += self._validate_service(service, topology)
-        for node in topology.nodes:
+        service = topology.get_domain_service()
+        errors += self._validate_service(service, topology)
+        for node in topology.get_nodes():
             errors += self._validate_node(node, topology)
         for link in topology.links:
             errors += self._validate_link(link, topology)
@@ -82,12 +82,12 @@ class TopologyValidator:
 
     def _validate_version(self, version, time_stamp, topology: Topology):
         """
-        Validate that the institution provided meets the XSD standards.
-        A institution must have the following:
+        Validate that the version and time_stamp provided meets the ISO standards.
          - It must meet object default standards.
          - It's Location values are valid
          - The Institution Type must be in the list of valid Institution types
-        :param institution: The Institution being evaluated.
+        :param version: The topology version.
+        :param time_stamp: The topology time stamp.
         :param topology: The Parent Topology.
         :return: A list of any issues in the data.
         """     
@@ -126,7 +126,8 @@ class TopologyValidator:
         :return: A list of any issues in the data.
         """
         errors = []
-        errors += self._validate_object_defaults(node, topology)
+        print(node)
+        errors += self._validate_object_defaults(node)
         errors += self._validate_location(node)
 
         return errors

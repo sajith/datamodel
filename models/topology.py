@@ -12,8 +12,9 @@
 
 import pprint
 import re  # noqa: F401
-
 import six
+
+from parsing.servicehandler import ServiceHandler
 
 GLOBAL_INSTITUTION_ID = 'urn:ogf:networking:global'
 
@@ -59,7 +60,7 @@ class Topology(object):
         self._id = id
         self._name = name
         if domain_service is not None:
-            self._domain_service = domain_service
+            self._domain_service = self.set_domain_service(domain_service)
         self._version = version
         self._time_stamp = time_stamp
         self._nodes = nodes
@@ -113,8 +114,7 @@ class Topology(object):
 
         self._name = name
 
-    @property
-    def domain_service(self):
+    def get_domain_service(self):
         """Gets the domain_service of this Topology.  # noqa: E501
 
 
@@ -123,16 +123,21 @@ class Topology(object):
         """
         return self._domain_service
 
-    @domain_service.setter
-    def domain_service(self, domain_service):
+    def set_domain_service(self, domain_service):
         """Sets the domain_service of this Topology.
 
 
         :param domain_service: The domain_service of this Topology.  # noqa: E501
         :type: Service
         """
+        if domain_service is None:
+            raise ValueError("Invalid value for `domain_service`, must not be `None`")  # noqa: E501
 
-        self._domain_service = domain_service
+        service_handler = ServiceHandler()
+        self._domain_service = service_handler.import_service_data(domain_service)
+        
+        return self.get_domain_service()
+
 
     @property
     def version(self):
@@ -180,8 +185,7 @@ class Topology(object):
 
         self._time_stamp = time_stamp
 
-    @property
-    def nodes(self):
+    def get_nodes(self):
         """Gets the nodes of this Topology.  # noqa: E501
 
 
@@ -190,8 +194,7 @@ class Topology(object):
         """
         return self._nodes
 
-    @nodes.setter
-    def nodes(self, nodes):
+    def set_nodes(self, nodes):
         """Sets the nodes of this Topology.
 
 
