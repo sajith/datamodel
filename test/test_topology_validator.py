@@ -6,7 +6,7 @@ from validation.topologyvalidator import TopologyValidator
 from parsing.topologyhandler import TopologyHandler
 from parsing.exceptions import DataModelException
 
-TOPOLOGY_AMLIGHT = './test/amlight.json'
+TOPOLOGY_AMLIGHT = './test/data/amlight.json'
 
 class TestTopologyValidator(unittest.TestCase):
 

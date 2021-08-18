@@ -6,7 +6,7 @@ from validation.connectionvalidator import ConnectionValidator
 from parsing.connectionhandler import ConnectionHandler
 from parsing.exceptions import DataModelException
 
-CONNECTION_P2P = './test/p2p.json'
+CONNECTION_P2P = './test/data/p2p.json'
 
 class TestConnectionValidator(unittest.TestCase):
 
