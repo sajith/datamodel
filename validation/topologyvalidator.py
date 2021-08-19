@@ -14,16 +14,16 @@ class TopologyValidator:
     The validation class made to validate a Topology
     """
     def __init__(self):
-        self._topology = None
-    @property
-    def topology(self):
-        return self._topology
-    @topology.setter
-    def topology(self, topology):
+        self.topology = None
+    
+    def get_topology(self):
+        return self.topology
+   
+    def set_topology(self, topology):
         if not isinstance(topology, Topology):
             raise ValueError('The Validator must be passed a Topology object')
-        self._topology = topology
-    @property
+        self.topology = topology
+    
     def is_valid(self):
         errors = self.validate(self.topology, raise_error=False)
         for error in errors:
@@ -46,7 +46,6 @@ class TopologyValidator:
          - It must have its primary owner in its institution list
          - It must have the global institution in the institution list
         :param topology: The topology being evaluated
-        :param parent: The Parent Topology. If this topology is the top level, then the parent should be None.
         :return: A list of any issues in the data.
         """
         errors = []
@@ -55,14 +54,13 @@ class TopologyValidator:
         if GLOBAL_INSTITUTION_ID not in topology.id:
             errors.append('Global Institution must be in Topology {}'.format(topology.id))
 
-        for service in topology.domain_service:
-            errors += self._validate_service(service, topology)
-        for node in topology.nodes:
+        service = topology.get_domain_service()
+        errors += self._validate_service(service, topology)
+        for node in topology.get_nodes():
             errors += self._validate_node(node, topology)
-        for link in topology.links:
+        for link in topology.get_links():
             errors += self._validate_link(link, topology)
-        for sub_topology in topology.topologies:
-            errors += self._validate_topology(sub_topology, topology)
+
         return errors
 
     def _validate_service(self, service: Service, topology: Topology):
@@ -77,18 +75,18 @@ class TopologyValidator:
         :return: A list of any issues in the data.
         """
         errors = []
-        errors += self._validate_object_defaults(service, topology)
+        errors += self._validate_object_defaults(service)
 
         return errors
 
     def _validate_version(self, version, time_stamp, topology: Topology):
         """
-        Validate that the institution provided meets the XSD standards.
-        A institution must have the following:
+        Validate that the version and time_stamp provided meets the ISO standards.
          - It must meet object default standards.
          - It's Location values are valid
          - The Institution Type must be in the list of valid Institution types
-        :param institution: The Institution being evaluated.
+        :param version: The topology version.
+        :param time_stamp: The topology time stamp.
         :param topology: The Parent Topology.
         :return: A list of any issues in the data.
         """     
@@ -127,8 +125,9 @@ class TopologyValidator:
         :return: A list of any issues in the data.
         """
         errors = []
-        errors += self._validate_object_defaults(node, topology)
-        errors += self._validate_location(node)
+        print(node)
+        errors += self._validate_object_defaults(node)
+        errors += self._validate_location(node.get_location())
 
         return errors
 
@@ -144,27 +143,23 @@ class TopologyValidator:
         :return: A list of any issues in the data.
         """
         errors = []
-        errors += self._validate_object_defaults(link, topology)
+        errors += self._validate_object_defaults(link)
 
-        if len(link._nodes) != 2:
+        if len(link._ports) != 2:
             errors.append(
-                'Link {} must connect between 2 Nodes. Currently {}'.format(
-                    link.id, str(link._nodes)
+                'Link {} must connect between 2 ports. Currently {}'.format(
+                    link.id, str(link._ports)
                 )
             )
-        for node in link._nodes:
-            if not isinstance(node, str):
+        for port in link._ports:
+            if not isinstance(port, str):
                 errors.append(
-                    'Link {} Node {} should be a string. Not {}'.format(
-                        link.id, node, node.__class__.__name__
+                    'Link {} Port {} should be a string. Not {}'.format(
+                        link.id, port, port.__class__.__name__
                     )
                 )
-            if topology and node not in topology.nodes:
-                errors.append(
-                    'Link {} listed node id {} does not exist in parent Topology {}'.format(
-                        link.id, node, topology.id
-                    )
-                )
+        #TODO: Check ports are in the current topology
+        
         return errors
 
     def _validate_object_defaults(self, sdx_object):
@@ -182,31 +177,23 @@ class TopologyValidator:
         :return: A list of any issues in the data.
         """
         errors = []
-        if not sdx_object.id:
+        if not sdx_object._id:
             errors.append('{} must have an ID'.format(sdx_object.__class__.__name__))
-        if not isinstance(sdx_object.id, str):
+        if not isinstance(sdx_object._id, str):
             errors.append('{} ID must be a string'.format(sdx_object.__class__.__name__))
-        if not sdx_object.name:
+        if not sdx_object._name:
             errors.append(
                 '{} {} must have a name'.format(
-                    sdx_object.__class__.__name__, sdx_object.id,
+                    sdx_object.__class__.__name__, sdx_object._name,
                 )
             )
-        if not isinstance(sdx_object.name, str):
+        if not isinstance(sdx_object._name, str):
             errors.append(
                 '{} {} name must be a String'.format(
-                    sdx_object.__class__.__name__, sdx_object.id,
+                    sdx_object.__class__.__name__, sdx_object._name,
                 )
             )
-        if sdx_object.short_name:
-            if not isinstance(sdx_object.short_name, str):
-                errors.append(
-                    '{} {} Short name must be a string'.format(
-                        sdx_object.__class__.__name__, sdx_object.id,
-                    )
-                )
 
-        errors += self._validate_additional_properties(sdx_object)
         return errors
 
     def _validate_location(self, location: Location, enforce_coordinates=True):
@@ -270,8 +257,8 @@ class TopologyValidator:
             )
 
         try:
-            if location.altitude:
-                float(location.altitude)
+            if location.latitude:
+                float(location.latitude)
         except ValueError:
             errors.append(
                 '{} {} Altitude must be a value that coordinates to a Floating point value'.format(
@@ -279,22 +266,17 @@ class TopologyValidator:
                 )
             )
 
-        if location.unlocode and not isinstance(location.unlocode, str):
+        if not location.address:
             errors.append(
-                '{} {} UN/LOCODE must be a string value'.format(location.__class__.__name__, location.id)
-            )
-        if isinstance(location.addresses, Iterable):
-            for address in location.addresses:
-                if not type(address) == str:
-                    errors.append(
-                        '{} {} Address {} must be a string'.format(
-                            location.__class__.__name__, location.id, address
-                        )
-                    )
-        else:
-            errors.append(
-                '{} {} Addresses should be a list of strings'.format(
-                    location.__class__.__name__, location.id
+                '{} {} Address must exist'.format(
+                    location.__class__.__name__, location._id
                 )
             )
+        if not type(location.address) == str:
+            errors.append(
+                '{} {} Address {} must be a string'.format(
+                    location.__class__.__name__, location._id, location.address
+                )
+            )
+
         return errors

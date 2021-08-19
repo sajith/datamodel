@@ -41,16 +41,18 @@ class Location(object):
 
     def __init__(self, address=None, latitude=None, longitude=None):  # noqa: E501
         """Location - a model defined in Swagger"""  # noqa: E501
+        self._id="location"
+        self._name="location"
         self._address = None
         self._latitude = None
         self._longitude = None
         self.discriminator = None
         if address is not None:
-            self.address = address
+            self._address = address
         if latitude is not None:
-            self.latitude = latitude
+            self._latitude = latitude
         if longitude is not None:
-            self.longitude = longitude
+            self._longitude = longitude
 
     @property
     def address(self):

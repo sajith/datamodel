@@ -12,13 +12,3 @@
 """
 
 from __future__ import absolute_import
-
-# import models into model package
-from .connection import Connection
-from .link import Link
-from .link_measurement_period import LinkMeasurementPeriod
-from .location import Location
-from .node import Node
-from .port import Port
-from .service import Service
-from .topology import Topology

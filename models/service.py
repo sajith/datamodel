@@ -45,8 +45,10 @@ class Service(object):
         'vendor': 'vendor'
     }
 
-    def __init__(self, monitoring_capability=None, owner=None, private_attributes=None, provisioning_system=None, provisioning_url=None, vendor=None):  # noqa: E501
+    def __init__(self, monitoring_capability=None, owner=None, private_attributes=None, provisioning_system=None, provisioning_url=None, vendor=None):  
         """Service - a model defined in Swagger"""  # noqa: E501
+        self._id="service"
+        self._name="service"
         self._monitoring_capability = None
         self._owner = None
         self._private_attributes = None
@@ -55,17 +57,17 @@ class Service(object):
         self._vendor = None
         self.discriminator = None
         if monitoring_capability is not None:
-            self.monitoring_capability = monitoring_capability
+            self._monitoring_capability = monitoring_capability
         if owner is not None:
-            self.owner = owner
+            self._owner = owner
         if private_attributes is not None:
-            self.private_attributes = private_attributes
+            self._private_attributes = private_attributes
         if provisioning_system is not None:
-            self.provisioning_system = provisioning_system
+            self._provisioning_system = provisioning_system
         if provisioning_url is not None:
-            self.provisioning_url = provisioning_url
+            self._provisioning_url = provisioning_url
         if vendor is not None:
-            self.vendor = vendor
+            self._vendor = vendor
 
     @property
     def monitoring_capability(self):
