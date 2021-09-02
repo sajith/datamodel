@@ -16,7 +16,10 @@ class TopologyManager():
         super().__init__()
 
         self.handler = TopologyHandler()
-        self.topology=Topology() 
+        #self.topology=Topology() 
+
+    def get_handler(self):
+        return self.handler
 
     def topology_id(self, id):
         self.topology._id(id)
@@ -33,7 +36,7 @@ class TopologyManager():
         ##links
         links = topology.get_links()
         self.topology.add_links(nodes)
-        
+
     def remove_topology(self, data):
         pass
 

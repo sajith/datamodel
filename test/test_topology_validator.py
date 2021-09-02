@@ -12,7 +12,7 @@ TOPOLOGY_AMPATH = './test/data/ampath.json'
 class TestTopologyValidator(unittest.TestCase):
 
     def setUp(self):
-        self.handler = TopologyHandler(TOPOLOGY_AMPATH)
+        self.handler = TopologyHandler(TOPOLOGY_AMLIGHT)
         self.validator = TopologyValidator()  
 
     def tearDown(self):

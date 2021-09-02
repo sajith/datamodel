@@ -15,7 +15,7 @@ class TopologyHandler():
         self.topology_file = topology_filename
         self.topology = None
 
-    def topology_file(self,topology_filename=None):
+    def topology_file_name(self,topology_filename=None):
         self.topology_file = topology_filename
 
     def import_topology(self):

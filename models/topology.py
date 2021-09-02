@@ -232,11 +232,11 @@ class Topology(object):
 
         self._nodes.extend(node_objects)
 
-    def get_node_by_port(self,port):
-        for node in self.get_nodes:
+    def get_node_by_port(self,aPort):
+        for node in self.nodes:
             ports = node.ports
             for port in ports:
-                if port.id == port:
+                if port.id == aPort['id']:
                     return node
         
         return None

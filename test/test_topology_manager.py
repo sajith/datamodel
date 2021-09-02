@@ -3,6 +3,8 @@ import unittest
 import parsing
 import topologymanager
 
+from validation.topologyvalidator import TopologyValidator
+from parsing.topologyhandler import TopologyHandler
 from topologymanager.manager import TopologyManager
 from topologymanager.grenmlconverter import GrenmlConverter
 from parsing.exceptions import DataModelException
@@ -10,19 +12,20 @@ from parsing.exceptions import DataModelException
 
 TOPOLOGY_AMLIGHT = './test/data/amlight.json'
 
-class TestTopologyHandler(unittest.TestCase):
+class TestTopologyManager(unittest.TestCase):
 
     def setUp(self):
         self.manager = TopologyManager()  # noqa: E501
-        self.manager.handler.topology_file(TOPOLOGY_AMLIGHT)
-        self.manager.handler.import_topology()
+        self.handler = self.manager.handler
+        self.handler.topology_file_name(TOPOLOGY_AMLIGHT)
+        self.handler.import_topology()
 
     def tearDown(self):
         pass
 
     def testMergeTopology(self):
         try:
-            print("Test Topology")
+            print("Test Topology Merge")
             print(self.handler.topology)
         except DataModelException as e:
             print(e)
@@ -31,8 +34,11 @@ class TestTopologyHandler(unittest.TestCase):
 
     def testGrenmlConverter(self):
         try:
-            print("Test Topology")
+            print("Test Topology Converter")
             print(self.handler.topology)
+            converter = GrenmlConverter(self.handler.topology)
+            converter.read_topology()
+            print(converter.get_xml_str)
         except DataModelException as e:
             print(e)
             return False      
