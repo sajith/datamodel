@@ -43,12 +43,12 @@ class TopologyManager():
     def update_topology(self,data):
         pass
 
-    def get_topology():
+    def get_topology(self):
         return self.topology
 
-    def inter_domain_check(topology):
+    def inter_domain_check(self,topology):
         pass
 
 
-    def generate_grenml():
+    def generate_grenml(self):
         pass
