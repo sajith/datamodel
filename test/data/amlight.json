@@ -4,13 +4,13 @@
       {
         "availability": 56.37376656633328,
         "available_bandwidth": 602746.015561422,
-        "id": "id",
+        "id": "l-1",
         "latency": 146582.15146899645,
         "name": "miami-Boca.amLight.sdx",
         "packet_loss": 59.621339166831824,
         "ports": [
           {
-            "id": "id",
+            "id": "p-1",
             "label_range": [
               "label_range",
               "label_range"
@@ -21,7 +21,7 @@
             "status": "up"
           },
           {
-            "id": "id",
+            "id": "p-2",
             "label_range": [
               "label_range",
               "label_range"
@@ -38,13 +38,13 @@
       {
         "availability": 56.37376656633328,
         "available_bandwidth": 602746.015561422,
-        "id": "id",
+        "id": "l-2",
         "latency": 146582.15146899645,
         "name": "miami-Boca.amLight.sdx",
         "packet_loss": 59.621339166831824,
         "ports": [
           {
-            "id": "id",
+            "id": "p-3",
             "label_range": [
               "label_range",
               "label_range"
@@ -55,7 +55,7 @@
             "status": "up"
           },
           {
-            "id": "id",
+            "id": "p-4",
             "label_range": [
               "label_range",
               "label_range"
@@ -73,7 +73,7 @@
     "name": "amLight",
     "nodes": [
       {
-        "id": "id",
+        "id": "1",
         "location": {
           "address": "Miami",
           "latitude": -28.51107891831147,
@@ -82,14 +82,14 @@
         "name": "urn:sdx:node:amlight.net:Novi06",
         "ports": [
           {
-            "id": "id",
+            "id": "p-1",
             "name": "urn:sdx:port:amlight.net:Novi06:9",
             "node": "urn:sdx:port:amlight.net:Novi06",
             "short_name": "9",
             "status": "up"
           },
           {
-            "id": "id",
+            "id": "p-3",
             "name": "urn:sdx:port:amlight.net:Novi06:9",
             "node": "urn:sdx:port:amlight.net:Novi06",
             "short_name": "9",
@@ -99,7 +99,7 @@
         "short_name": "Novi06"
       },
       {
-        "id": "id",
+        "id": "2",
         "location": {
           "address": "Miami",
           "latitude": -28.51107891831147,
@@ -108,7 +108,7 @@
         "name": "urn:sdx:node:amlight.net:Novi06",
         "ports": [
           {
-            "id": "id",
+            "id": "p-2",
             "label_range": [
               "label_range",
               "label_range"
@@ -119,7 +119,7 @@
             "status": "up"
           },
           {
-            "id": "id",
+            "id": "p-4",
             "label_range": [
               "label_range",
               "label_range"

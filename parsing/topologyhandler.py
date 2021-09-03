@@ -10,10 +10,13 @@ class TopologyHandler():
     Handler for parsing the topology descritpion in json 
     """
 
-    def __init__(self,topology_filename):
+    def __init__(self,topology_filename=None):
         super().__init__()
         self.topology_file = topology_filename
         self.topology = None
+
+    def topology_file_name(self,topology_filename=None):
+        self.topology_file = topology_filename
 
     def import_topology(self):
         with open(self.topology_file, 'r', encoding='utf-8') as data_file:

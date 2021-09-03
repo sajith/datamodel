@@ -3,9 +3,15 @@
 Synopsis: A validation class to evaluate that the supplied Topology object contains expected data format
 """
 from collections.abc import Iterable
-from models import Topology, Service, Node, Link, Location
-from models.topology import GLOBAL_INSTITUTION_ID
 from re import match
+
+from models.topology import GLOBAL_INSTITUTION_ID, Topology
+from models.service import Service 
+from models.node import Node 
+from models.link import Link
+from models.port import Port
+from models.location import Location
+
 
 ISO_FORMAT = r'\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}[-+]\d{2}:\d{2}'
 
@@ -125,7 +131,7 @@ class TopologyValidator:
         :return: A list of any issues in the data.
         """
         errors = []
-        print(node)
+
         errors += self._validate_object_defaults(node)
         errors += self._validate_location(node.get_location())
 
