@@ -18,7 +18,9 @@ from parsing.servicehandler import ServiceHandler
 from parsing.nodehandler import NodeHandler
 from parsing.linkhandler import LinkHandler
 
-GLOBAL_INSTITUTION_ID = 'urn:ogf:networking:global'
+SDX_INSTITUTION_ID = 'urn:ogf:network:sdx'
+SDX_TOPOLOGY_ID_prefix = "urn:ogf:network:sdx"
+TOPOLOGY_INITIAL_VERSION="0.0"
 
 class Topology(object):
 

@@ -21,7 +21,7 @@ class TopologyHandler():
     def import_topology(self):
         with open(self.topology_file, 'r', encoding='utf-8') as data_file:
             data = json.load(data_file)
-            self.topology = self.import_topology_data(data)
+            self.import_topology_data(data)
 
     def import_topology_data(self, data):
         try:
@@ -35,9 +35,9 @@ class TopologyHandler():
         except KeyError as e:
             raise MissingAttributeException(e.args[0],e.args[0])
 
-        topology=Topology(id=id, name=name, domain_service = service, version=version, time_stamp=time_stamp, nodes=nodes, links=links)
+        self.topology=Topology(id=id, name=name, domain_service = service, version=version, time_stamp=time_stamp, nodes=nodes, links=links)
 
-        return topology
+        return self.topology
 
-    def get_topology():
+    def get_topology(self):
         return self.topology
