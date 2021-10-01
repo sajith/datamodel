@@ -38,6 +38,8 @@ class TopologyManager():
             self.topology = copy.deepcopy(topology)
             ##generate a new topology id
             self.generate_id()
+        else:
+            self.update_version(False)
 
         ## update the version and timestamp to be the latest
         ##check the inter-domain links first.
@@ -57,11 +59,12 @@ class TopologyManager():
         self.topology.version(Topology.TOPOLOGY_INITIAL_VERSION)
         return id
     
-    def remove_topology(self, data):
-        pass
+    def remove_topology(self, topology_id):
+        self.topology_list.pop(topology_id, None)
+        self.update_version(False)
 
     def update_topology(self,data):
-        #likely adding new iner-domain links
+        #likely adding new inter-domain links
         self.update_version(True)
 
     def get_topology(self):
@@ -81,12 +84,15 @@ class TopologyManager():
             for port in link.ports:
                 if port.inter_domain:
                     interdomain_port_list.append(port)
+
+        #ToDo: raise an warning or exception
         if len(interdomain_port_list)==0:
             return False
 
         #match any ports in the existing topology
-        # 
-        # 
+        for port in  interdomain_port_list:
+            print("checking port:" + port.id)
+            
         # remove the duplicated inter-domain links?
         # 
          
