@@ -183,7 +183,7 @@ class Node(object):
         if ports is None:
             raise ValueError("Invalid value for `ports`, must not be `None`")  # noqa: E501
 
-        if self.ports is None:
+        if self._ports is None:
             self._ports=[]
 
         for port in ports:
@@ -191,7 +191,7 @@ class Node(object):
             port_obj = port_handler.import_port_data(port)
             self._ports.append(port_obj)
         
-        return self.ports
+        return self._ports
 
     @ports.setter
     def ports(self, ports):

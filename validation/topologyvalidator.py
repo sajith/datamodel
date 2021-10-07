@@ -5,7 +5,7 @@ Synopsis: A validation class to evaluate that the supplied Topology object conta
 from collections.abc import Iterable
 from re import match
 
-from models.topology import GLOBAL_INSTITUTION_ID, Topology
+from models.topology import SDX_INSTITUTION_ID, Topology
 from models.service import Service 
 from models.node import Node 
 from models.link import Link
@@ -57,7 +57,7 @@ class TopologyValidator:
         errors = []
         errors += self._validate_object_defaults(topology)
 
-        if GLOBAL_INSTITUTION_ID not in topology.id:
+        if SDX_INSTITUTION_ID not in topology.id:
             errors.append('Global Institution must be in Topology {}'.format(topology.id))
 
         service = topology.get_domain_service()

@@ -13,7 +13,7 @@ from parsing.exceptions import DataModelException
 
 TOPOLOGY_AMLIGHT = './test/data/amlight.json'
 TOPOLOGY_SAX = './test/data/sax.json'
-TOPOLOGY_ZHAOXI = './test/data/zhaoxi.json'
+TOPOLOGY_ZHAOXI = './test/data/zaoxi.json'
 
 topology_file_list = [TOPOLOGY_AMLIGHT,TOPOLOGY_SAX, TOPOLOGY_ZHAOXI]
 
@@ -29,10 +29,10 @@ class TestTopologyManager(unittest.TestCase):
         print("Test Topology Merge!")
         try:
             for topology_file in topology_file_list:
-                with open(self.topology_file, 'r', encoding='utf-8') as data_file:
+                with open(topology_file, 'r', encoding='utf-8') as data_file:
                     data = json.load(data_file)
                 print("Adding Topology:" + topology_file)
-                self.manager.add_topology(self, data)
+                self.manager.add_topology(data)
             
         except DataModelException as e:
             print(e)
@@ -42,10 +42,14 @@ class TestTopologyManager(unittest.TestCase):
     def testGrenmlConverter(self):
         try:
             print("Test Topology GRENML Converter")
-            converter = GrenmlConverter(self.topology)
+            self.testMergeTopology()
+            converter = GrenmlConverter(self.manager.get_topology())
             converter.read_topology()
             print(converter.get_xml_str)
         except DataModelException as e:
             print(e)
             return False      
         return True
+
+if __name__ == '__main__':
+    unittest.main()

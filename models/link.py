@@ -71,7 +71,8 @@ class Link(object):
         self._name = name
         if short_name is not None:
             self._short_name = short_name
-        self.ports = ports
+        if ports is not None:    
+            self._ports = self.set_ports(ports)
         if total_bandwidth is not None:
             self._total_bandwidth = total_bandwidth
         if available_bandwidth is not None:
@@ -166,6 +167,23 @@ class Link(object):
         """
         return self._ports
 
+    def set_ports(self, ports):
+        """Sets the ports of this Node.
+
+
+        :param ports: The ports of this Node.  # noqa: E501
+        :type: list[port]
+        """
+        if ports is None:
+            raise ValueError("Invalid value for `ports`, must not be `None`")  # noqa: E501
+
+        if self._ports is None:
+            self._ports=[]
+
+        for port in ports:
+            self._ports.append(port['id'])
+        
+        return self.ports
     @ports.setter
     def ports(self, ports):
         """Sets the ports of this Link.
