@@ -8,11 +8,13 @@ from parsing.exceptions import DataModelException
 
 TOPOLOGY_AMLIGHT = './test/data/amlight.json'
 TOPOLOGY_AMPATH = './test/data/ampath.json'
+TOPOLOGY_SAX = './test/data/sax.json'
+TOPOLOGY_ZAOXI = './test/data/zaoxi.json'
 
 class TestTopologyValidator(unittest.TestCase):
 
     def setUp(self):
-        self.handler = TopologyHandler(TOPOLOGY_AMLIGHT)
+        self.handler = TopologyHandler(TOPOLOGY_ZAOXI)
         self.validator = TopologyValidator()  
 
     def tearDown(self):

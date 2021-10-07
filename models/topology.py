@@ -74,8 +74,7 @@ class Topology(object):
         """
         return self._id
 
-    @id.setter
-    def id(self, id):
+    def set_id(self, id):
         """Sets the id of this Topology.
 
 
@@ -97,8 +96,7 @@ class Topology(object):
         """
         return self._name
 
-    @name.setter
-    def name(self, name):
+    def set_name(self, name):
         """Sets the name of this Topology.
 
 
@@ -155,8 +153,7 @@ class Topology(object):
         """
         return self._version
 
-    @version.setter
-    def version(self, version):
+    def set_version(self, version):
         """Sets the version of this Topology.
 
 
@@ -227,6 +224,11 @@ class Topology(object):
         
         return self.get_nodes()
 
+    def remove_node(self,node_id):
+        for node in list(self._nodes):
+            if node.id == node_id:
+                self._nodes.remove(node)
+
     def add_nodes(self, node_objects):
         """add the nodes to this Topology.
         :param node_objects: a list of node objects
@@ -238,7 +240,7 @@ class Topology(object):
         for node in self.nodes:
             ports = node.ports
             for port in ports:
-                if port.id == aPort['id']:
+                if port.id == aPort:
                     return node
         
         return None
@@ -279,12 +281,17 @@ class Topology(object):
         
         return self.get_links()
 
+    def remove_link(self,link_id):
+        for link in list(self._links):
+            if link.id == link_id:
+                self._links.remove(link)
+
     def add_links(self, link_objects):
         """add the links to this Topology.
         :param link_objects: a list of link objects
         """
 
-        self._nodes.extend(link_objects)
+        self._links.extend(link_objects)
 
     @property
     def private_attributes(self):
