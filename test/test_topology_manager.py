@@ -1,5 +1,8 @@
 import unittest
 import json
+from networkx import MultiGraph, Graph
+import matplotlib.pyplot as plt
+import networkx as nx
 
 import parsing
 import topologymanager
@@ -46,6 +49,19 @@ class TestTopologyManager(unittest.TestCase):
             converter = GrenmlConverter(self.manager.get_topology())
             converter.read_topology()
             print(converter.get_xml_str)
+        except DataModelException as e:
+            print(e)
+            return False      
+        return True
+
+    def testGenerateGraph(self):
+        try:
+            print("Test Topology Graph")
+            self.testMergeTopology()
+            graph = self.manager.generate_graph()
+            #pos = nx.spring_layout(graph, seed=225)  # Seed for reproducible layout
+            nx.draw(graph)
+            plt.savefig("amlight.png")
         except DataModelException as e:
             print(e)
             return False      
