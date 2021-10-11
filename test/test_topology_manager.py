@@ -61,7 +61,7 @@ class TestTopologyManager(unittest.TestCase):
             self.testMergeTopology()
             graph = self.manager.generate_graph()
             #pos = nx.spring_layout(graph, seed=225)  # Seed for reproducible layout
-            nx.draw(graph)
+            nx.draw(graph,with_labels = True)
             plt.savefig("amlight.png")
         except DataModelException as e:
             print(e)

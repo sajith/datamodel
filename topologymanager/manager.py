@@ -180,8 +180,8 @@ class TopologyManager():
                     end_nodes.append(node)
                     print("graph node:"+node.id)
             if not inter_domain_link:
-                G.add_edge(end_nodes[0].id,end_nodes[1].id)
-                edge = G.edges[end_nodes[0].id,end_nodes[1].id]
+                G.add_edge(end_nodes[0].name,end_nodes[1].name)
+                edge = G.edges[end_nodes[0].name,end_nodes[1].name]
                 edge['id'] = link.id
                 edge['latency'] = link.latency
                 edge['total_bandwidth'] = link.total_bandwidth
