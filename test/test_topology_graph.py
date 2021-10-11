@@ -15,6 +15,8 @@ from parsing.exceptions import DataModelException
 
 
 TOPOLOGY_AMLIGHT = './test/data/amlight.json'
+TOPOLOGY_SAX = './test/data/sax.json'
+TOPOLOGY_ZAOXI = './test/data/zaoxi.json'
 
 class TestTopologyGrpah(unittest.TestCase):
 

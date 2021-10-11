@@ -22,6 +22,42 @@
     {
       "availability": 56.37376656633328,
       "available_bandwidth": 602746.015561422,
+      "id": "urn:ogf:network:sdx:link:sax:Panama-Fortaleza",
+      "latency": 146582.15146899645,
+      "name": "sax:Panama-Fortaleza",
+      "packet_loss": 59.621339166831824,
+      "ports": [
+        {
+          "id": "urn:ogf:network:sdx:port:sax:B3:2"
+        },
+        {
+          "id": "urn:ogf:network:sdx:port:sax:B2:4"
+        }
+      ],
+      "short_name": "Panama-Fortaleza",
+      "total_bandwidth": 80083.7389632821
+    },
+    {
+      "availability": 56.37376656633328,
+      "available_bandwidth": 602746.015561422,
+      "id": "urn:ogf:network:sdx:link:sax:SanPaolo-Fortaleza",
+      "latency": 146582.15146899645,
+      "name": "nni:SanPaolo-Fortaleza",
+      "packet_loss": 59.621339166831824,
+      "ports": [
+        {
+          "id": "urn:ogf:network:sdx:port:sax:B3:3"
+        },
+        {
+          "id": "urn:ogf:network:sdx:port:sax:B1:4"
+        }
+      ],
+      "short_name": "BocaRaton-Fortaleza",
+      "total_bandwidth": 80083.7389632821
+    },
+    {
+      "availability": 56.37376656633328,
+      "available_bandwidth": 602746.015561422,
       "id": "urn:ogf:network:sdx:link:sax:A1-B1",
       "latency": 146582.15146899645,
       "name": "sax:A1-B1",
@@ -155,6 +191,17 @@
             "10001"
           ],
           "status": "up"
+        },
+        {
+          "id": "urn:ogf:network:sdx:port:sax:B1:4",
+          "name": "Novi01:3",
+          "node": "urn:ogf:network:sdx:port:sax:B1",
+          "short_name": "B1:4",
+          "label_range": [
+            "100-200",
+            "10001"
+          ],
+          "status": "up"
         }
       ],
       "short_name": "B1"
@@ -162,9 +209,9 @@
     {
       "id": "urn:ogf:network:sdx:node:sax:B2",
       "location": {
-        "address": "Fortaleza",
-        "latitude": -3.73163824920348,  
-        "longitude": -38.52443289673026
+        "address": "PanamaCity",
+        "latitude": 8.993040465928525,   
+        "longitude": -79.4947050137491
       },
       "name": "sax:Novi02",
       "ports": [
@@ -197,6 +244,17 @@
             "10001"
           ],
           "name": "Novi02:3",
+          "node": "urn:ogf:network:sdx:node:sax:B2",
+          "short_name": "B2:3",
+          "status": "up"
+        },
+        {
+          "id": "urn:ogf:network:sdx:port:sax:B2:4",
+          "label_range": [
+            "100-200",
+            "10001"
+          ],
+          "name": "Novi02:4",
           "node": "urn:ogf:network:sdx:node:sax:B2",
           "short_name": "B2:3",
           "status": "up"

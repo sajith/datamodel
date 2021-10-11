@@ -39,6 +39,11 @@ class TopologyManager():
     
     def set_topology(self, topology):  
         self.topology = topology
+    
+    def clear_topology(self):
+        self.topology=None
+        self.topology_list={}
+        self.port_list={}
 
     def add_topology(self, data):
 
@@ -129,7 +134,7 @@ class TopologyManager():
         for link in links:
             link_dict[link.id] = link
             for port in link.ports:
-                    interdomain_port_dict[port]=link
+                interdomain_port_dict[port]=link
 
         #ToDo: raise an warning or exception
         if len(interdomain_port_dict)==0:
@@ -137,12 +142,13 @@ class TopologyManager():
 
         #match any ports in the existing topology
         for port_id in  interdomain_port_dict:
-            print("checking port:" + port_id)
             for existing_port, existing_link in self.port_list.items():
                 if port_id == existing_port:
+                    print("Interdomain port:" + port_id)
                     #remove redundant link between two domains
                     self.topology.remove_link(existing_link.id)   
-                    num_interdomain_link=+1     
+                    num_interdomain_link=+1
+            self.port_list[port_id] = interdomain_port_dict[port_id]
 
         return num_interdomain_link
 
@@ -172,6 +178,7 @@ class TopologyManager():
                     break
                 else:
                     end_nodes.append(node)
+                    print("graph node:"+node.id)
             if not inter_domain_link:
                 G.add_edge(end_nodes[0].id,end_nodes[1].id)
                 edge = G.edges[end_nodes[0].id,end_nodes[1].id]

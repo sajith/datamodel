@@ -13,7 +13,7 @@
           "id": "urn:ogf:network:sdx:port:zaoxi:B1:2"
         },
         {
-          "id": "urn:ogf:network:sdx:node:zaoxi:B2:2"
+          "id": "urn:ogf:network:sdx:port:zaoxi:B2:2"
         }
       ],
       "short_name": "Sangano-Capetown",
@@ -28,7 +28,7 @@
       "packet_loss": 59.621339166831824,
       "ports": [
         {
-          "id": "urn:ogf:network:sdx:node:zaoxi:A1:1"
+          "id": "urn:ogf:network:sdx:port:zaoxi:A1:1"
         },
         {
           "id": "urn:ogf:network:sdx:port:zaoxi:B1:3"
@@ -46,13 +46,32 @@
       "packet_loss": 59.621339166831824,
       "ports": [
         {
-          "id": "urn:ogf:network:sdx:node:zaoxi:A1:2"
+          "id": "urn:ogf:network:sdx:port:zaoxi:A1:2"
         },
         {
           "id": "urn:ogf:network:sdx:port:zaoxi:B2:3"
         }
       ],
       "short_name": "Karoo-Capetown",
+      "total_bandwidth": 80083.7389632821
+    },
+    {
+      "availability": 56.37376656633328,
+      "available_bandwidth": 602746.015561422,
+      "id": "urn:ogf:network:sdx:link:nni:Fortaleza-Sangano",
+      "latency": 146582.15146899645,
+      "name": "nni:Fortaleza-Sangano",
+      "packet_loss": 59.621339166831824,
+      "nni": "True",
+      "ports": [
+        {
+          "id": "urn:ogf:network:sdx:port:sax:B3:1"
+        },
+        {
+          "id": "urn:ogf:network:sdx:port:zaoxi:B1:1"
+        }
+      ],
+      "short_name": "Fortaleza-Sangano",
       "total_bandwidth": 80083.7389632821
     }
   ],
