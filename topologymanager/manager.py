@@ -2,6 +2,8 @@
 import json
 import copy
 
+import networkx as nx
+
 from models.topology import Topology, SDX_TOPOLOGY_ID_prefix,TOPOLOGY_INITIAL_VERSION
 from models.link import Link
 from models.port import Port
@@ -35,6 +37,14 @@ class TopologyManager():
     def topology_id(self, id):  
         self.topology._id(id)
     
+    def set_topology(self, topology):  
+        self.topology = topology
+    
+    def clear_topology(self):
+        self.topology=None
+        self.topology_list={}
+        self.port_list={}
+
     def add_topology(self, data):
 
         topology = self.handler.import_topology_data(data)
@@ -124,7 +134,7 @@ class TopologyManager():
         for link in links:
             link_dict[link.id] = link
             for port in link.ports:
-                    interdomain_port_dict[port]=link
+                interdomain_port_dict[port]=link
 
         #ToDo: raise an warning or exception
         if len(interdomain_port_dict)==0:
@@ -132,12 +142,13 @@ class TopologyManager():
 
         #match any ports in the existing topology
         for port_id in  interdomain_port_dict:
-            print("checking port:" + port_id)
             for existing_port, existing_link in self.port_list.items():
                 if port_id == existing_port:
+                    print("Interdomain port:" + port_id)
                     #remove redundant link between two domains
                     self.topology.remove_link(existing_link.id)   
-                    num_interdomain_link=+1     
+                    num_interdomain_link=+1
+            self.port_list[port_id] = interdomain_port_dict[port_id]
 
         return num_interdomain_link
 
@@ -147,11 +158,41 @@ class TopologyManager():
     def add_domain_service(self):
         pass
 
+    #may need to read from a configuration file.    
     def update_private_properties(self):
         pass
 
+    #adjacent matrix of the graph, in jason?    
     def generate_graph(self):
-        pass
+        G = nx.Graph()
+        links = self.topology.links
+        for link in links:
+            inter_domain_link = False
+            ports=link.ports
+            end_nodes=[]
+            for port in ports:
+                node=self.topology.get_node_by_port(port)
+                if node is None:
+                    print("This port doesn't belong to any node in the topology, likely an Interdomain port!" + port)
+                    inter_domain_link = True
+                    break
+                else:
+                    end_nodes.append(node)
+                    print("graph node:"+node.id)
+            if not inter_domain_link:
+                G.add_edge(end_nodes[0].name,end_nodes[1].name)
+                edge = G.edges[end_nodes[0].name,end_nodes[1].name]
+                edge['id'] = link.id
+                edge['latency'] = link.latency
+                edge['total_bandwidth'] = link.total_bandwidth
+                edge['available_bandwidth'] = link.available_bandwidth
+                edge['latency'] = link.latency
+                edge['packet_loss'] = link.packet_loss
+                edge['availability'] = link.availability
+
+        return G
+
+
 
     def generate_grenml(self):
         self.converter = GrenmlConverter(self.topology)

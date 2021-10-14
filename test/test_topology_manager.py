@@ -1,5 +1,8 @@
 import unittest
 import json
+from networkx import MultiGraph, Graph
+import matplotlib.pyplot as plt
+import networkx as nx
 
 import parsing
 import topologymanager
@@ -13,9 +16,10 @@ from parsing.exceptions import DataModelException
 
 TOPOLOGY_AMLIGHT = './test/data/amlight.json'
 TOPOLOGY_SAX = './test/data/sax.json'
-TOPOLOGY_ZHAOXI = './test/data/zaoxi.json'
+TOPOLOGY_ZAOXI = './test/data/zaoxi.json'
 
-topology_file_list = [TOPOLOGY_AMLIGHT,TOPOLOGY_SAX, TOPOLOGY_ZHAOXI]
+topology_file_list_3 = [TOPOLOGY_AMLIGHT,TOPOLOGY_SAX, TOPOLOGY_ZAOXI]
+topology_file_list_2 = [TOPOLOGY_SAX, TOPOLOGY_ZAOXI]
 
 class TestTopologyManager(unittest.TestCase):
 
@@ -28,7 +32,7 @@ class TestTopologyManager(unittest.TestCase):
     def testMergeTopology(self):
         print("Test Topology Merge!")
         try:
-            for topology_file in topology_file_list:
+            for topology_file in topology_file_list_3:
                 with open(topology_file, 'r', encoding='utf-8') as data_file:
                     data = json.load(data_file)
                 print("Adding Topology:" + topology_file)
@@ -46,6 +50,19 @@ class TestTopologyManager(unittest.TestCase):
             converter = GrenmlConverter(self.manager.get_topology())
             converter.read_topology()
             print(converter.get_xml_str)
+        except DataModelException as e:
+            print(e)
+            return False      
+        return True
+
+    def testGenerateGraph(self):
+        try:
+            print("Test Topology Graph")
+            self.testMergeTopology()
+            graph = self.manager.generate_graph()
+            #pos = nx.spring_layout(graph, seed=225)  # Seed for reproducible layout
+            nx.draw(graph,with_labels = True)
+            plt.savefig("amlight.png")
         except DataModelException as e:
             print(e)
             return False      
