@@ -22,12 +22,6 @@
                 }
             ]
         },
-        "private_attributes": {
-            "type": "array",
-            "items": {
-                "type": "string"
-            }
-        },
         "monitoring_capability": {
             "anyOf": [
                 {
