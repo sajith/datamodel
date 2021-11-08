@@ -2,6 +2,7 @@
 
 - [How to Contribute](#contrib)
 - [AW-SDX Data Model](#datamodel)
+- [How to test and use](#usage)
 - [AW-SDX Accompanying Projectsl](#accompany)
 
 ## <a name="contrib"></a>How to Contribute
@@ -43,6 +44,7 @@ This set of updates mainly come from the domain monitoring system which is suppo
 ## Topology description schemas
 There are defined in the *schema* subfolder. Some attributes of each objects are requied (Can be found in the API definition) while some are optional. Two attributes are worth of mentioning: (1) In the *service* object, there is a *vender* attribute for the domain to list device vendors that are NOT in its domain, (2) in the topology, link, node, and port objects, there is an *private* attibute for the domain to list attributes that need to kept private.:wq
   
+## <a name="usage"></a>Usage
 ## Unittest
 ```
 python -m unittest -v test.test_topology_handler
@@ -50,5 +52,13 @@ python -m unittest -v test.test_topology_handler
 ```
 python -m unittest -v test.test_topology_validator
 ```
+## Install
+```
+pip install -r requirements.txt
+```
+```
+python setup.py install
+```
+
 
 ## <a name="accompany"></a>Accompanying AW-SDX Projects
