@@ -3,7 +3,7 @@
   "links": [
     {
       "availability": 56.37376656633328,
-      "available_bandwidth": 602746.015561422,
+      "residual_bandwidth": 602746.015561422,
       "id": "urn:ogf:network:sdx:link:sax:B1-B2",
       "latency": 146582.15146899645,
       "name": "sax:B1-B2",
@@ -17,11 +17,11 @@
         }
       ],
       "short_name": "SaoPaulo-Fortaleza",
-      "total_bandwidth": 80083.7389632821
+      "bandwidth": 80083.7389632821
     },
     {
       "availability": 56.37376656633328,
-      "available_bandwidth": 602746.015561422,
+      "residual_bandwidth": 602746.015561422,
       "id": "urn:ogf:network:sdx:link:sax:Panama-Fortaleza",
       "latency": 146582.15146899645,
       "name": "sax:Panama-Fortaleza",
@@ -35,11 +35,11 @@
         }
       ],
       "short_name": "Panama-Fortaleza",
-      "total_bandwidth": 80083.7389632821
+      "bandwidth": 80083.7389632821
     },
     {
       "availability": 56.37376656633328,
-      "available_bandwidth": 602746.015561422,
+      "residual_bandwidth": 602746.015561422,
       "id": "urn:ogf:network:sdx:link:sax:SanPaolo-Fortaleza",
       "latency": 146582.15146899645,
       "name": "nni:SanPaolo-Fortaleza",
@@ -53,11 +53,11 @@
         }
       ],
       "short_name": "BocaRaton-Fortaleza",
-      "total_bandwidth": 80083.7389632821
+      "bandwidth": 80083.7389632821
     },
     {
       "availability": 56.37376656633328,
-      "available_bandwidth": 602746.015561422,
+      "residual_bandwidth": 602746.015561422,
       "id": "urn:ogf:network:sdx:link:sax:A1-B1",
       "latency": 146582.15146899645,
       "name": "sax:A1-B1",
@@ -71,11 +71,11 @@
         }
       ],
       "short_name": "redclara-SaoPaulo",
-      "total_bandwidth": 80083.7389632821
+      "bandwidth": 80083.7389632821
     },
     {
       "availability": 56.37376656633328,
-      "available_bandwidth": 602746.015561422,
+      "residual_bandwidth": 602746.015561422,
       "id": "urn:ogf:network:sdx:link:sax:A1-B2",
       "latency": 146582.15146899645,
       "name": "sax:A1-B2",
@@ -89,11 +89,11 @@
         }
       ],
       "short_name": "redclara-Fortaleza",
-      "total_bandwidth": 80083.7389632821
+      "bandwidth": 80083.7389632821
     },
     {
       "availability": 56.37376656633328,
-      "available_bandwidth": 602746.015561422,
+      "residual_bandwidth": 602746.015561422,
       "id": "urn:ogf:network:sdx:link:nni:Miami-Sanpaolo",
       "latency": 146582.15146899645,
       "name": "nni:Miami-Sanpaolo",
@@ -107,11 +107,11 @@
         }
       ],
       "short_name": "Miami-Sanpaolo",
-      "total_bandwidth": 80083.7389632821
+      "bandwidth": 80083.7389632821
     },
     {
       "availability": 56.37376656633328,
-      "available_bandwidth": 602746.015561422,
+      "residual_bandwidth": 602746.015561422,
       "id": "urn:ogf:network:sdx:link:nni:BocaRaton-Fortaleza",
       "latency": 146582.15146899645,
       "name": "nni:BocaRaton-Fortaleza",
@@ -126,11 +126,11 @@
         }
       ],
       "short_name": "BocaRaton-Fortaleza",
-      "total_bandwidth": 80083.7389632821
+      "bandwidth": 80083.7389632821
     },
     {
       "availability": 56.37376656633328,
-      "available_bandwidth": 602746.015561422,
+      "residual_bandwidth": 602746.015561422,
       "id": "urn:ogf:network:sdx:link:nni:Fortaleza-Sangano",
       "latency": 146582.15146899645,
       "name": "nni:Fortaleza-Sangano",
@@ -145,7 +145,7 @@
         }
       ],
       "short_name": "Fortaleza-Sangano",
-      "total_bandwidth": 80083.7389632821
+      "bandwidth": 80083.7389632821
     }
   ],
   "name": "sax",

@@ -184,9 +184,9 @@ class TopologyManager():
                 edge = G.edges[end_nodes[0].name,end_nodes[1].name]
                 edge['id'] = link.id
                 edge['latency'] = link.latency
-                edge['total_bandwidth'] = link.total_bandwidth
-                edge['available_bandwidth'] = link.available_bandwidth
-                edge['latency'] = link.latency
+                edge['bandwidth'] = link.bandwidth
+                edge['residual_bandwidth'] = link.residual_bandwidth
+                #edge['latency'] = link.latency
                 edge['packet_loss'] = link.packet_loss
                 edge['availability'] = link.availability
 

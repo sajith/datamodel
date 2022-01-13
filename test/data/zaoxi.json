@@ -3,7 +3,7 @@
   "links": [
     {
       "availability": 56.37376656633328,
-      "available_bandwidth": 602746.015561422,
+      "residual_bandwidth": 602746.015561422,
       "id": "urn:ogf:network:sdx:link:zaoxi:B1-B2",
       "latency": 146582.15146899645,
       "name": "zaoxi:B1-B2",
@@ -17,11 +17,11 @@
         }
       ],
       "short_name": "Sangano-Capetown",
-      "total_bandwidth": 80083.7389632821
+      "bandwidth": 80083.7389632821
     },
     {
       "availability": 56.37376656633328,
-      "available_bandwidth": 602746.015561422,
+      "residual_bandwidth": 602746.015561422,
       "id": "urn:ogf:network:sdx:link:zaoxi:A1-B1",
       "latency": 146582.15146899645,
       "name": "zaoxi:A1-B1",
@@ -35,11 +35,11 @@
         }
       ],
       "short_name": "Karoo-Sangano",
-      "total_bandwidth": 80083.7389632821
+      "bandwidth": 80083.7389632821
     },
     {
       "availability": 56.37376656633328,
-      "available_bandwidth": 602746.015561422,
+      "residual_bandwidth": 602746.015561422,
       "id": "urn:ogf:network:sdx:link:zaoxi:A1-B2",
       "latency": 146582.15146899645,
       "name": "zaoxi:A1-B2",
@@ -53,11 +53,11 @@
         }
       ],
       "short_name": "Karoo-Capetown",
-      "total_bandwidth": 80083.7389632821
+      "bandwidth": 80083.7389632821
     },
     {
       "availability": 56.37376656633328,
-      "available_bandwidth": 602746.015561422,
+      "residual_bandwidth": 602746.015561422,
       "id": "urn:ogf:network:sdx:link:nni:Fortaleza-Sangano",
       "latency": 146582.15146899645,
       "name": "nni:Fortaleza-Sangano",
@@ -72,7 +72,7 @@
         }
       ],
       "short_name": "Fortaleza-Sangano",
-      "total_bandwidth": 80083.7389632821
+      "bandwidth": 80083.7389632821
     }
   ],
   "name": "zaoxi",

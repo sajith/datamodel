@@ -28,11 +28,13 @@ class Link(object):
         'name': 'str',
         'short_name': 'str',
         'ports': 'list[Port]',
-        'total_bandwidth': 'float',
-        'available_bandwidth': 'float',
+        'bandwidth': 'float',
+        'residual_bandwidth': 'float',
         'latency': 'float',
         'packet_loss': 'float',
         'availability': 'float',
+        'status': 'str',
+        'state': 'str',
         'private_attributes': 'list[str]',
         'time_stamp': 'datetime',
         'measurement_period': 'LinkMeasurementPeriod'
@@ -43,24 +45,26 @@ class Link(object):
         'name': 'name',
         'short_name': 'short_name',
         'ports': 'ports',
-        'total_bandwidth': 'total_bandwidth',
-        'available_bandwidth': 'available_bandwidth',
+        'bandwidth': 'bandwidth',
+        'residual_bandwidth': 'residual_bandwidth',
         'latency': 'latency',
         'packet_loss': 'packet_loss',
         'availability': 'availability',
+        'status': 'status',
+        'state': 'state',
         'private_attributes': 'private_attributes',
         'time_stamp': 'time_stamp',
         'measurement_period': 'measurement_period'
     }
 
-    def __init__(self, id=None, name=None, short_name=None, ports=None, total_bandwidth=None, available_bandwidth=None, latency=None, packet_loss=None, availability=None, private_attributes=None, time_stamp=None, measurement_period=None):  # noqa: E501
+    def __init__(self, id=None, name=None, short_name=None, ports=None, bandwidth=None, residual_bandwidth=None, latency=None, packet_loss=None, availability=None, private_attributes=None, time_stamp=None, measurement_period=None):  # noqa: E501
         """Link - a model defined in Swagger"""  # noqa: E501
         self._id = None
         self._name = None
         self._short_name = None
         self._ports = None
-        self._total_bandwidth = None
-        self._available_bandwidth = None
+        self._bandwidth = None
+        self._residual_bandwidth = None
         self._latency = None
         self._packet_loss = None
         self._availability = None
@@ -73,10 +77,10 @@ class Link(object):
             self._short_name = short_name
         if ports is not None:    
             self._ports = self.set_ports(ports)
-        if total_bandwidth is not None:
-            self._total_bandwidth = total_bandwidth
-        if available_bandwidth is not None:
-            self._available_bandwidth = available_bandwidth
+        if bandwidth is not None:
+            self._bandwidth = bandwidth
+        if residual_bandwidth is not None:
+            self._residual_bandwidth = residual_bandwidth
         if latency is not None:
             self._latency = latency
         if packet_loss is not None:
@@ -198,46 +202,46 @@ class Link(object):
         self._ports = ports
 
     @property
-    def total_bandwidth(self):
-        """Gets the total_bandwidth of this Link.  # noqa: E501
+    def bandwidth(self):
+        """Gets the bandwidth of this Link.  # noqa: E501
 
 
-        :return: The total_bandwidth of this Link.  # noqa: E501
+        :return: The bandwidth of this Link.  # noqa: E501
         :rtype: float
         """
-        return self._total_bandwidth
+        return self._bandwidth
 
-    @total_bandwidth.setter
-    def total_bandwidth(self, total_bandwidth):
-        """Sets the total_bandwidth of this Link.
+    @bandwidth.setter
+    def bandwidth(self, bandwidth):
+        """Sets the bandwidth of this Link.
 
 
-        :param total_bandwidth: The total_bandwidth of this Link.  # noqa: E501
+        :param bandwidth: The bandwidth of this Link.  # noqa: E501
         :type: float
         """
 
-        self._total_bandwidth = total_bandwidth
+        self._bandwidth = bandwidth
 
     @property
-    def available_bandwidth(self):
-        """Gets the available_bandwidth of this Link.  # noqa: E501
+    def residual_bandwidth(self):
+        """Gets the residual_bandwidth of this Link.  # noqa: E501
 
 
-        :return: The available_bandwidth of this Link.  # noqa: E501
+        :return: The residual_bandwidth of this Link.  # noqa: E501
         :rtype: float
         """
-        return self._available_bandwidth
+        return self._residual_bandwidth
 
-    @available_bandwidth.setter
-    def available_bandwidth(self, available_bandwidth):
-        """Sets the available_bandwidth of this Link.
+    @residual_bandwidth.setter
+    def residual_bandwidth(self, residual_bandwidth):
+        """Sets the residual_bandwidth of this Link.
 
 
-        :param available_bandwidth: The available_bandwidth of this Link.  # noqa: E501
+        :param residual_bandwidth: The residual_bandwidth of this Link.  # noqa: E501
         :type: float
         """
 
-        self._available_bandwidth = available_bandwidth
+        self._residual_bandwidth = residual_bandwidth
 
     @property
     def latency(self):
@@ -301,6 +305,52 @@ class Link(object):
         """
 
         self._availability = availability
+
+    @property
+    def status(self):
+        """Gets the status of this Link.  # noqa: E501
+
+
+        :return: The status of this Link.  # noqa: E501
+        :rtype: str
+        """
+        return self._status
+
+    @status.setter
+    def status(self, status):
+        """Sets the status of this Link.
+
+
+        :param status: The status of this Link.  # noqa: E501
+        :type: str
+        """
+        if status is None:
+            raise ValueError("Invalid value for `status`, must not be `None`")  # noqa: E501
+
+        self._status = status
+
+    @property
+    def state(self):
+        """Gets the state of this Link.  # noqa: E501
+
+
+        :return: The status of this Link.  # noqa: E501
+        :rtype: str
+        """
+        return self._state
+
+    @status.setter
+    def state(self, state):
+        """Sets the status of this Link.
+
+
+        :param status: The status of this Link.  # noqa: E501
+        :type: str
+        """
+        if state is None:
+            raise ValueError("Invalid value for `state`, must not be `None`")  # noqa: E501
+
+        self._state = state
 
     @property
     def private_attributes(self):

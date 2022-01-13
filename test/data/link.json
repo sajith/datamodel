@@ -1,6 +1,6 @@
 {
     "availability": 56.37376656633328,
-    "available_bandwidth": 602746.015561422,
+    "residual_bandwidth": 602746.015561422,
     "id": "id",
     "latency": 146582.15146899645,
     "name": "miami-Boca.amLight.sdx",
@@ -30,5 +30,5 @@
       }
     ],
     "short_name": "Miami-BocaRaton",
-    "total_bandwidth": 80083.7389632821
+    "bandwidth": 80083.7389632821
   }

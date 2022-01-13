@@ -3,7 +3,7 @@
     "links": [
       {
         "availability": 56.37376656633328,
-        "available_bandwidth": 602746.015561422,
+        "residula_bandwidth": 602746.015561422,
         "id": "l-1",
         "latency": 146582.15146899645,
         "name": "miami-Boca.amLight.sdx",
@@ -33,11 +33,11 @@
           }
         ],
         "short_name": "Miami-BocaRaton",
-        "total_bandwidth": 80083.7389632821
+        "bandwidth": 80083.7389632821
       },
       {
         "availability": 56.37376656633328,
-        "available_bandwidth": 602746.015561422,
+        "residula_bandwidth": 602746.015561422,
         "id": "l-2",
         "latency": 146582.15146899645,
         "name": "miami-Boca.amLight.sdx",
@@ -67,7 +67,7 @@
           }
         ],
         "short_name": "Miami-BocaRaton",
-        "total_bandwidth": 80083.7389632821
+        "bandwidth": 80083.7389632821
       }
     ],
     "name": "amLight",

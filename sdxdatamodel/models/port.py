@@ -34,6 +34,7 @@ class Port(object):
         'node': 'str',
         'label_range': 'list[str]',
         'status': 'str',
+        'state': 'str',
         'private_attributes': 'list[str]'
     }
 
@@ -44,6 +45,7 @@ class Port(object):
         'node': 'node',
         'label_range': 'label_range',
         'status': 'status',
+        'state': 'state',
         'private_attributes': 'private_attributes'
     }
 
@@ -204,6 +206,29 @@ class Port(object):
             raise ValueError("Invalid value for `status`, must not be `None`")  # noqa: E501
 
         self._status = status
+
+    @property
+    def state(self):
+        """Gets the state of this Port.  # noqa: E501
+
+
+        :return: The state of this Port.  # noqa: E501
+        :rtype: str
+        """
+        return self._state
+
+    @status.setter
+    def state(self, state):
+        """Sets the state of this Port.
+
+
+        :param state: The state of this Port.  # noqa: E501
+        :type: str
+        """
+        if state is None:
+            raise ValueError("Invalid value for `state`, must not be `None`")  # noqa: E501
+
+        self._state = state
 
     @property
     def private_attributes(self):

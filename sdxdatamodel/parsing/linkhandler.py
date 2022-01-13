@@ -22,10 +22,10 @@ class LinkHandler():
             timestamp=None;t_b=None;a_b=None;latency=None;p_l=None;p_a=None;avai=None;m_p=None
             if 'time_stamp' in data.keys():
                 timestamp=data['time_stamp']
-            if 'total_bandwidth' in data.keys():
-                t_b=data['total_bandwidth']
-            if 'available_bandwidth' in data.keys():
-                a_b=data['available_bandwidth']
+            if 'bandwidth' in data.keys():
+                t_b=data['bandwidth']
+            if 'residual_bandwidth' in data.keys():
+                a_b=data['residual_bandwidth']
             if 'latency' in data.keys():
                 latency=data['latency']
             if 'packet_loss' in data.keys():
@@ -39,7 +39,7 @@ class LinkHandler():
         except KeyError as e:
             raise MissingAttributeException(e.args[0],e.args[0])
 
-        link=Link(id=id, name=name, short_name=short_name, ports=ports, total_bandwidth=t_b, available_bandwidth=a_b, 
+        link=Link(id=id, name=name, short_name=short_name, ports=ports, bandwidth=t_b, residual_bandwidth=a_b, 
             latency=latency, packet_loss=p_l, availability=avai, private_attributes=p_a, time_stamp=timestamp, measurement_period=m_p)
 
         return link

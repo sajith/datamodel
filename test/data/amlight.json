@@ -3,7 +3,7 @@
     "links": [
       {
         "availability": 56.37376656633328,
-        "available_bandwidth": 602746.015561422,
+        "residual_bandwidth": 602746.015561422,
         "id": "urn:ogf:network:sdx:link:amlight:B1-B2",
         "latency": 146582.15146899645,
         "name": "amlight:B1-B2",
@@ -17,11 +17,11 @@
           }
         ],
         "short_name": "Miami-BocaRaton",
-        "total_bandwidth": 80083.7389632821
+        "bandwidth": 80083.7389632821
       },
       {
         "availability": 56.37376656633328,
-        "available_bandwidth": 602746.015561422,
+        "residual_bandwidth": 602746.015561422,
         "id": "urn:ogf:network:sdx:link:amlight:A1-B1",
         "latency": 146582.15146899645,
         "name": "amlight:A1-B1",
@@ -35,11 +35,11 @@
           }
         ],
         "short_name": "redclara-miami",
-        "total_bandwidth": 80083.7389632821
+        "bandwidth": 80083.7389632821
       },
       {
         "availability": 56.37376656633328,
-        "available_bandwidth": 602746.015561422,
+        "residual_bandwidth": 602746.015561422,
         "id": "urn:ogf:network:sdx:link:amlight:A1-B2",
         "latency": 146582.15146899645,
         "name": "amlight:A1-B2",
@@ -53,11 +53,11 @@
           }
         ],
         "short_name": "redclara-BocaRaton",
-        "total_bandwidth": 80083.7389632821
+        "bandwidth": 80083.7389632821
       },
       {
         "availability": 56.37376656633328,
-        "available_bandwidth": 602746.015561422,
+        "residual_bandwidth": 602746.015561422,
         "id": "urn:ogf:network:sdx:link:nni:Miami-Sanpaolo",
         "latency": 146582.15146899645,
         "name": "nni:Miami-Sanpaolo",
@@ -72,11 +72,11 @@
           }
         ],
         "short_name": "Miami-Sanpaolo",
-        "total_bandwidth": 80083.7389632821
+        "bandwidth": 80083.7389632821
       },
       {
         "availability": 56.37376656633328,
-        "available_bandwidth": 602746.015561422,
+        "residual_bandwidth": 602746.015561422,
         "id": "urn:ogf:network:sdx:link:nni:BocaRaton-Fortaleza",
         "latency": 146582.15146899645,
         "name": "nni:BocaRaton-Fortaleza",
@@ -91,7 +91,7 @@
           }
         ],
         "short_name": "BocaRaton-Fortaleza",
-        "total_bandwidth": 80083.7389632821
+        "bandwidth": 80083.7389632821
       }
     ],
     "name": "amLight",
