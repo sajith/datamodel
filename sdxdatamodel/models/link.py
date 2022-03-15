@@ -68,6 +68,8 @@ class Link(object):
         self._latency = None
         self._packet_loss = None
         self._availability = None
+        self._state = None
+        self._status = None
         self._private_attributes = None
         self._time_stamp = None
         self._measurement_period = None
