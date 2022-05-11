@@ -63,7 +63,7 @@ class TestTopologyManager(unittest.TestCase):
             graph = self.manager.generate_graph()
             #pos = nx.spring_layout(graph, seed=225)  # Seed for reproducible layout
             nx.draw(graph,with_labels = True)
-            plt.savefig("./test/amlight.png")
+            plt.savefig("./test/data/amlight.png")
         except DataModelException as e:
             print(e)
             return False      

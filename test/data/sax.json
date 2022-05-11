@@ -104,7 +104,7 @@
       "packet_loss": 59.621339166831824,
       "ports": [
         {
-          "id": "urn:ogf:network:sdx:port:amlight:B1:1"
+          "id": "urn:sdx:port:amlight.net:B1:1"
         },
         {
           "id": "urn:ogf:network:sdx:port:sax:B1:1"
@@ -123,7 +123,7 @@
       "nni": "True",
       "ports": [
         {
-          "id": "urn:ogf:network:sdx:port:amlight:B2:1"
+          "id": "urn:sdx:port:amlight.net:B2:1"
         },
         {
           "id": "urn:ogf:network:sdx:port:sax:B2:1"
