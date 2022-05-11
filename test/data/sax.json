@@ -1,5 +1,9 @@
 {
-  "id": "urn:ogf:network:sdx:topology:sax",
+  "id": "urn:ogf:network:sdx:topology:sax.net",
+  "name": "SAX-OXP",
+  "time_stamp": "2000-01-23T04:56:07+00:00",
+  "version": 1,
+  "model_version":"1.0.0",
   "links": [
     {
       "availability": 56.37376656633328,
@@ -148,7 +152,6 @@
       "bandwidth": 80083.7389632821
     }
   ],
-  "name": "sax",
   "nodes": [
     {
       "id": "urn:ogf:network:sdx:node:sax:B1",
@@ -343,8 +346,6 @@
       "short_name": "A1"
     }
   ],
-  "time_stamp": "2000-01-23T04:56:07+00:00",
-  "version": 1,
   "domain_service": {
     "owner":"RNP"
   }
