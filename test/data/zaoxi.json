@@ -1,9 +1,13 @@
 {
-  "id": "urn:ogf:network:sdx:topology:zaoxi",
+  "id": "urn:ogf:network:sdx:topology:zaoxi.net",
+  "name": "ZAOXI-OXP",
+  "time_stamp": "2000-01-23T04:56:07+00:00",
+  "version": 1,
+  "model_version":"1.0.0",
   "links": [
     {
       "availability": 56.37376656633328,
-      "available_bandwidth": 602746.015561422,
+      "residual_bandwidth": 602746.015561422,
       "id": "urn:ogf:network:sdx:link:zaoxi:B1-B2",
       "latency": 146582.15146899645,
       "name": "zaoxi:B1-B2",
@@ -17,11 +21,11 @@
         }
       ],
       "short_name": "Sangano-Capetown",
-      "total_bandwidth": 80083.7389632821
+      "bandwidth": 80083.7389632821
     },
     {
       "availability": 56.37376656633328,
-      "available_bandwidth": 602746.015561422,
+      "residual_bandwidth": 602746.015561422,
       "id": "urn:ogf:network:sdx:link:zaoxi:A1-B1",
       "latency": 146582.15146899645,
       "name": "zaoxi:A1-B1",
@@ -35,11 +39,11 @@
         }
       ],
       "short_name": "Karoo-Sangano",
-      "total_bandwidth": 80083.7389632821
+      "bandwidth": 80083.7389632821
     },
     {
       "availability": 56.37376656633328,
-      "available_bandwidth": 602746.015561422,
+      "residual_bandwidth": 602746.015561422,
       "id": "urn:ogf:network:sdx:link:zaoxi:A1-B2",
       "latency": 146582.15146899645,
       "name": "zaoxi:A1-B2",
@@ -53,11 +57,11 @@
         }
       ],
       "short_name": "Karoo-Capetown",
-      "total_bandwidth": 80083.7389632821
+      "bandwidth": 80083.7389632821
     },
     {
       "availability": 56.37376656633328,
-      "available_bandwidth": 602746.015561422,
+      "residual_bandwidth": 602746.015561422,
       "id": "urn:ogf:network:sdx:link:nni:Fortaleza-Sangano",
       "latency": 146582.15146899645,
       "name": "nni:Fortaleza-Sangano",
@@ -72,10 +76,9 @@
         }
       ],
       "short_name": "Fortaleza-Sangano",
-      "total_bandwidth": 80083.7389632821
+      "bandwidth": 80083.7389632821
     }
   ],
-  "name": "zaoxi",
   "nodes": [
     {
       "id": "urn:ogf:network:sdx:node:zaoxi:B1",
@@ -202,8 +205,6 @@
       "short_name": "A1"
     }
   ],
-  "time_stamp": "2000-01-23T04:56:07+00:00",
-  "version": 1,
   "domain_service": {
     "owner":"FIU"
   }
