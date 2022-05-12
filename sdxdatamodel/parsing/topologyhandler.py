@@ -27,7 +27,9 @@ class TopologyHandler():
         try:
             id = data['id']
             name=data['name']
-            service=data['domain_service']
+            service = None
+            if 'domain_service' in data.keys():
+                service=data['domain_service']
             version=data['version']
             time_stamp=data['time_stamp']
             nodes=data['nodes']
