@@ -14,10 +14,26 @@
       "packet_loss": 59.621339166831824,
       "ports": [
         {
-          "id": "urn:ogf:network:sdx:port:sax:B1:2"
+          "id": "urn:ogf:network:sdx:port:sax:B1:2",
+          "name": "Novi01:2",
+          "node": "urn:ogf:network:sdx:port:sax:B1",
+          "short_name": "B1:2",
+          "label_range": [
+            "100-200",
+            "10001"
+          ],
+          "status": "up"
         },
         {
-          "id": "urn:ogf:network:sdx:port:sax:B2:2"
+          "id": "urn:ogf:network:sdx:port:sax:B2:2",
+          "label_range": [
+            "100-200",
+            "10001"
+          ],
+          "name": "Novi02:2",
+          "node": "urn:ogf:network:sdx:node:sax:B2",
+          "short_name": "B2:2",
+          "status": "up"
         }
       ],
       "short_name": "SaoPaulo-Fortaleza",
@@ -32,10 +48,26 @@
       "packet_loss": 59.621339166831824,
       "ports": [
         {
-          "id": "urn:ogf:network:sdx:port:sax:B3:2"
+          "id": "urn:ogf:network:sdx:port:sax:B3:2",
+          "label_range": [
+            "100-200",
+            "10001"
+          ],
+          "name": "Novi02:3",
+          "node": "urn:ogf:network:sdx:node:sax:B3",
+          "short_name": "B3:2",
+          "status": "up"
         },
         {
-          "id": "urn:ogf:network:sdx:port:sax:B2:4"
+          "id": "urn:ogf:network:sdx:port:sax:B2:4",
+          "label_range": [
+            "100-200",
+            "10001"
+          ],
+          "name": "Novi02:4",
+          "node": "urn:ogf:network:sdx:node:sax:B2",
+          "short_name": "B2:3",
+          "status": "up"
         }
       ],
       "short_name": "Panama-Fortaleza",
@@ -50,10 +82,26 @@
       "packet_loss": 59.621339166831824,
       "ports": [
         {
-          "id": "urn:ogf:network:sdx:port:sax:B3:3"
+          "id": "urn:ogf:network:sdx:port:sax:B3:3",
+          "label_range": [
+            "100-200",
+            "10001"
+          ],
+          "name": "Novi03:3",
+          "node": "urn:ogf:network:sdx:node:sax:B3",
+          "short_name": "B3:3",
+          "status": "up"
         },
         {
-          "id": "urn:ogf:network:sdx:port:sax:B1:4"
+          "id": "urn:ogf:network:sdx:port:sax:B1:4",
+          "name": "Novi01:3",
+          "node": "urn:ogf:network:sdx:port:sax:B1",
+          "short_name": "B1:4",
+          "label_range": [
+            "100-200",
+            "10001"
+          ],
+          "status": "up"
         }
       ],
       "short_name": "BocaRaton-Fortaleza",
@@ -68,10 +116,26 @@
       "packet_loss": 59.621339166831824,
       "ports": [
         {
-          "id": "urn:ogf:network:sdx:port:sax:A1:1"
+          "id": "urn:ogf:network:sdx:port:sax:A1:1",
+          "label_range": [
+            "100-200",
+            "1000"
+          ],
+          "name": "Novi100:1",
+          "node": "urn:ogf:network:sdx:node:sax:A1",
+          "short_name": "A1:1",
+          "status": "up"
         },
         {
-          "id": "urn:ogf:network:sdx:port:sax:B1:3"
+          "id": "urn:ogf:network:sdx:port:sax:B1:3",
+          "name": "Novi01:3",
+          "node": "urn:ogf:network:sdx:port:sax:B1",
+          "short_name": "B1:3",
+          "label_range": [
+            "100-200",
+            "10001"
+          ],
+          "status": "up"
         }
       ],
       "short_name": "redclara-SaoPaulo",
@@ -86,10 +150,26 @@
       "packet_loss": 59.621339166831824,
       "ports": [
         {
-          "id": "urn:ogf:network:sdx:port:sax:A1:2"
+          "id": "urn:ogf:network:sdx:port:sax:A1:2",
+          "label_range": [
+            "100-200",
+            "1000"
+          ],
+          "name": "Novi100:2",
+          "node": "urn:ogf:network:sdx:node:sax:A1",
+          "short_name": "A1:2",
+          "status": "up"
         },
         {
-          "id": "urn:ogf:network:sdx:port:sax:B2:3"
+          "id": "urn:ogf:network:sdx:port:sax:B2:3",
+          "label_range": [
+            "100-200",
+            "10001"
+          ],
+          "name": "Novi02:3",
+          "node": "urn:ogf:network:sdx:node:sax:B2",
+          "short_name": "B2:3",
+          "status": "up"
         }
       ],
       "short_name": "redclara-Fortaleza",
@@ -104,7 +184,15 @@
       "packet_loss": 59.621339166831824,
       "ports": [
         {
-          "id": "urn:sdx:port:amlight.net:B1:1"
+          "id": "urn:sdx:port:amlight:B1:1",
+          "name": "Novi01:1",
+          "node": "urn:sdx:node:amlight.net:B1",
+          "short_name": "B1:1",
+          "label_range": [
+            "100-200",
+            "10001"
+          ],
+          "status": "up"
         },
         {
           "id": "urn:ogf:network:sdx:port:sax:B1:1"
@@ -123,10 +211,26 @@
       "nni": "True",
       "ports": [
         {
-          "id": "urn:sdx:port:amlight.net:B2:1"
+          "id": "urn:sdx:port:amlight.net:B2:1",
+          "label_range": [
+            "100-200",
+            "1000"
+          ],
+          "name": "Novi02:1",
+          "node": "urn:sdx:node:amlight.net:B2",
+          "short_name": "B2:1",
+          "status": "up"
         },
         {
-          "id": "urn:ogf:network:sdx:port:sax:B2:1"
+          "id": "urn:ogf:network:sdx:port:sax:B2:1",
+          "label_range": [
+            "100-200",
+            "1000"
+          ],
+          "name": "Novi02:1",
+          "node": "urn:ogf:network:sdx:node:sax:B2",
+          "short_name": "B2:1",
+          "status": "up"
         }
       ],
       "short_name": "BocaRaton-Fortaleza",
@@ -142,10 +246,26 @@
       "nni": "True",
       "ports": [
         {
-          "id": "urn:ogf:network:sdx:port:sax:B3:1"
+          "id": "urn:ogf:network:sdx:port:sax:B3:1",
+          "label_range": [
+            "100-200",
+            "1000"
+          ],
+          "name": "Novi02:3",
+          "node": "urn:ogf:network:sdx:node:sax:B3",
+          "short_name": "B3:1",
+          "status": "up"
         },
         {
-          "id": "urn:ogf:network:sdx:port:zaoxi:B1:1"
+          "id": "urn:ogf:network:sdx:port:sax:B1:1",
+          "name": "Novi01:1",
+          "node": "urn:ogf:network:sdx:port:sax:B1",
+          "short_name": "B1:1",
+          "label_range": [
+            "100-200",
+            "10001"
+          ],
+          "status": "up"
         }
       ],
       "short_name": "Fortaleza-Sangano",
