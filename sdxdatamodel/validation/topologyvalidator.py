@@ -64,7 +64,8 @@ class TopologyValidator:
             errors.append('Global Institution must be in Topology {}'.format(topology.id))
 
         service = topology.get_domain_service()
-        errors += self._validate_service(service, topology)
+        if service is not None:
+            errors += self._validate_service(service, topology)
         for node in topology.get_nodes():
             errors += self._validate_node(node, topology)
         for link in topology.get_links():
