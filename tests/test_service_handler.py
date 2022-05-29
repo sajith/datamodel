@@ -5,7 +5,7 @@ import parsing
 from parsing.servicehandler import ServiceHandler
 from parsing.exceptions import DataModelException
 
-service = './test/data/service.json'
+service = './tests/data/service.json'
 
 class TestServiceHandler(unittest.TestCase):
 

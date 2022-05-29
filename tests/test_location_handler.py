@@ -2,23 +2,23 @@ import unittest
 
 import parsing
 
-from parsing.porthandler import PortHandler
+from parsing.locationhandler import LocationHandler
 from parsing.exceptions import DataModelException
 
-port = './test/data/port.json'
+location = './tests/data/location.json'
 
 class TestPortHandler(unittest.TestCase):
 
     def setUp(self):
-        self.handler = PortHandler()  # noqa: E501
+        self.handler = LocationHandler()  # noqa: E501
     def tearDown(self):
         pass
 
-    def testImportPort(self):
+    def testImportLocation(self):
         try:
-            print("Test Port")
-            self.handler.import_port(port)
-            print(self.handler.port)
+            print("Test Location")
+            self.handler.import_location(location)
+            print(self.handler.location)
         except DataModelException as e:
             print(e)
             return False      

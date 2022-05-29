@@ -6,10 +6,10 @@ from sdxdatamodel.validation.topologyvalidator import TopologyValidator
 from sdxdatamodel.parsing.topologyhandler import TopologyHandler
 from sdxdatamodel.parsing.exceptions import DataModelException
 
-TOPOLOGY_AMLIGHT = './test/data/amlight.json'
-TOPOLOGY_AMPATH = './test/data/ampath.json'
-TOPOLOGY_SAX = './test/data/sax.json'
-TOPOLOGY_ZAOXI = './test/data/zaoxi.json'
+TOPOLOGY_AMLIGHT = './tests/data/amlight.json'
+TOPOLOGY_AMPATH = './tests/data/ampath.json'
+TOPOLOGY_SAX = './tests/data/sax.json'
+TOPOLOGY_ZAOXI = './tests/data/zaoxi.json'
 
 class TestTopologyValidator(unittest.TestCase):
 

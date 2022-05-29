@@ -5,7 +5,7 @@ import sdxdatamodel.parsing
 from sdxdatamodel.parsing.topologyhandler import TopologyHandler
 from sdxdatamodel.parsing.exceptions import DataModelException
 
-TOPOLOGY_AMLIGHT = './test/data/amlight.json'
+TOPOLOGY_AMLIGHT = './tests/data/amlight.json'
 
 class TestTopologyHandler(unittest.TestCase):
 

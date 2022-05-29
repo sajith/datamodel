@@ -5,7 +5,7 @@ import parsing
 from parsing.connectionhandler import ConnectionHandler
 from parsing.exceptions import DataModelException
 
-CONNECTION_P2P = './test/data/p2p.json'
+CONNECTION_P2P = './tests/data/p2p.json'
 
 class TestConnectionHandler(unittest.TestCase):
 

@@ -15,9 +15,11 @@ from sdxdatamodel.topologymanager.grenmlconverter import GrenmlConverter
 from sdxdatamodel.parsing.exceptions import DataModelException
 
 
-TOPOLOGY_AMLIGHT = './test/data/amlight.json'
-TOPOLOGY_SAX = './test/data/sax.json'
-TOPOLOGY_ZAOXI = './test/data/zaoxi.json'
+TOPOLOGY_AMLIGHT = './tests/data/amlight.json'
+TOPOLOGY_SAX = './tests/data/sax.json'
+TOPOLOGY_ZAOXI = './tests/data/zaoxi.json'
+
+TOPOLOGY_png = "./tests/data/amlight.png"
 
 topology_file_list_3 = [TOPOLOGY_AMLIGHT,TOPOLOGY_SAX, TOPOLOGY_ZAOXI]
 topology_file_list_2 = [TOPOLOGY_SAX, TOPOLOGY_ZAOXI]
@@ -63,7 +65,7 @@ class TestTopologyManager(unittest.TestCase):
             graph = self.manager.generate_graph()
             #pos = nx.spring_layout(graph, seed=225)  # Seed for reproducible layout
             nx.draw(graph,with_labels = True)
-            plt.savefig("./test/data/amlight.png")
+            plt.savefig(TOPOLOGY_png)
         except DataModelException as e:
             print(e)
             return False      

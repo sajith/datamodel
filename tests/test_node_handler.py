@@ -2,23 +2,23 @@ import unittest
 
 import parsing
 
-from parsing.linkhandler import LinkHandler
+from parsing.nodehandler import NodeHandler
 from parsing.exceptions import DataModelException
 
-link = './test/data/link.json'
+node = './tests/data/node.json'
 
-class TestLinkHandler(unittest.TestCase):
+class TestNodeHandler(unittest.TestCase):
 
     def setUp(self):
-        self.handler = LinkHandler()  # noqa: E501
+        self.handler = NodeHandler()  # noqa: E501
     def tearDown(self):
         pass
 
-    def testImportLink(self):
+    def testImportNode(self):
         try:
-            print("Test Link")
-            self.handler.import_link(link)
-            print(self.handler.link)
+            print("Test node")
+            self.handler.import_node(node)
+            print(self.handler.node)
         except DataModelException as e:
             print(e)
             return False      
