@@ -57,7 +57,7 @@ python -m unittest -v tests.test_topology_validator
 pip install -r requirements.txt
 ```
 ```
-python install -e .
+pip install -e .
 ```
 
 
