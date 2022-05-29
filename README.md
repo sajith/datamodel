@@ -47,17 +47,17 @@ There are defined in the *schema* subfolder. Some attributes of each objects are
 ## <a name="usage"></a>Usage
 ## Unittest
 ```
-python -m unittest -v test.test_topology_handler
+python -m unittest -v tests.test_topology_handler
 ```
 ```
-python -m unittest -v test.test_topology_validator
+python -m unittest -v tests.test_topology_validator
 ```
 ## Install
 ```
 pip install -r requirements.txt
 ```
 ```
-python setup.py install
+python install -e .
 ```
 
 
