@@ -1,11 +1,11 @@
 import unittest
 
-import parsing
+#import parsing
 
-from validation.connectionvalidator import ConnectionValidator
-from parsing.connectionhandler import ConnectionHandler
-from parsing.exceptions import DataModelException
-from models.connection import Connection
+from sdxdatamodel.validation.connectionvalidator import ConnectionValidator
+from sdxdatamodel.parsing.connectionhandler import ConnectionHandler
+from sdxdatamodel.parsing.exceptions import DataModelException
+from sdxdatamodel.models.connection import Connection
 
 CONNECTION_P2P = './tests/data/p2p.json'
 

@@ -4,14 +4,11 @@ from networkx import MultiGraph, Graph
 import matplotlib.pyplot as plt
 import networkx as nx
 
-import parsing
-import topologymanager
-
-from validation.topologyvalidator import TopologyValidator
-from parsing.topologyhandler import TopologyHandler
-from topologymanager.manager import TopologyManager
-from topologymanager.grenmlconverter import GrenmlConverter
-from parsing.exceptions import DataModelException
+from sdxdatamodel.validation.topologyvalidator import TopologyValidator
+from sdxdatamodel.parsing.topologyhandler import TopologyHandler
+from sdxdatamodel.topologymanager.manager import TopologyManager
+from sdxdatamodel.topologymanager.grenmlconverter import GrenmlConverter
+from sdxdatamodel.parsing.exceptions import DataModelException
 
 
 TOPOLOGY_AMLIGHT = './tests/data/amlight.json'
@@ -36,7 +33,7 @@ class TestTopologyGrpah(unittest.TestCase):
             graph = self.manager.generate_graph()
             #pos = nx.spring_layout(graph, seed=225)  # Seed for reproducible layout
             nx.draw(graph)
-            plt.savefig("./test/data/amlight.png")
+            plt.savefig("./tests/data/amlight.png")
         except DataModelException as e:
             print(e)
             return False      

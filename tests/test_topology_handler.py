@@ -1,7 +1,5 @@
 import unittest
 
-import sdxdatamodel.parsing
-
 from sdxdatamodel.parsing.topologyhandler import TopologyHandler
 from sdxdatamodel.parsing.exceptions import DataModelException
 

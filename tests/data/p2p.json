@@ -9,6 +9,7 @@
     {
         "id": "urn:sdx:port:amlight.net:Novi07:10",
         "name": "10",
+        "short_name": "Novi07:10",
         "label": "vlan",
         "label_range": "100",
         "node": "urn:sdx:port:amlight.net:Novi07"
@@ -17,6 +18,7 @@
     {
         "id": "urn:sdx:port:amlight.net:Novi06:9",
         "name": "Novi06:9",
+        "short_name": "Novi06:9",
         "label": "vlan",
         "label_range": "100",
         "node": "urn:sdx:port:amlight.net:Novi06"
