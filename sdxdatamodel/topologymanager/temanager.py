@@ -84,7 +84,6 @@ class TEManager():
         i=0
         domain_breakdown={}
         for domain, links in breakdown.items():
-            print(i)
             segment={}
             if first:
                 first=False
@@ -102,9 +101,6 @@ class TEManager():
                 last_link=links[-1]
                 n1=self.graph.nodes[last_link[0]]['id']
                 n2=self.graph.nodes[last_link[1]]['id']
-                print(last_link[0])
-                print(n1)
-                print(n2)
                 n1,p1,n2,p2=self.manager.topology.get_port_by_link(n1,n2)
                 i_port=next_i
                 e_port=p1
