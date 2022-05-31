@@ -77,6 +77,14 @@ class TopologyManager():
 
             self.update_version(False)
 
+    def get_domain_name(self,node_id):
+        domain_id=None
+        for id, topology in self.topology_list.items():
+            if topology.has_node_by_id(node_id):
+                domain_id = id
+                break    
+        return domain_id
+
     def generate_id(self):
         self.topology.set_id(SDX_TOPOLOGY_ID_prefix)
         self.topology.set_version(TOPOLOGY_INITIAL_VERSION)
@@ -180,8 +188,8 @@ class TopologyManager():
                     end_nodes.append(node)
                     #print("graph node:"+node.id)
             if not inter_domain_link:
-                G.add_edge(end_nodes[0].name,end_nodes[1].name)
-                edge = G.edges[end_nodes[0].name,end_nodes[1].name]
+                G.add_edge(end_nodes[0].id,end_nodes[1].id)
+                edge = G.edges[end_nodes[0].id,end_nodes[1].id]
                 edge['id'] = link.id
                 edge['latency'] = link.latency
                 edge['bandwidth'] = link.bandwidth

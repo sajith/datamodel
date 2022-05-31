@@ -40,8 +40,8 @@ class TEManager():
         egress_port = self.connection.egress_port
         egress_node = self.manager.topology.get_node_by_port(egress_port.id)
 
-        i_node = [x for x,y in self.graph.nodes(data=True) if y['name']==ingress_node.name]
-        e_node = [x for x,y in self.graph.nodes(data=True) if y['name']==egress_node.name]
+        i_node = [x for x,y in self.graph.nodes(data=True) if y['id']==ingress_node.id]
+        e_node = [x for x,y in self.graph.nodes(data=True) if y['id']==egress_node.id]
 
         bandwidth_required=self.connection.bandwidth
         latency_required=self.connection.latency
@@ -53,5 +53,65 @@ class TEManager():
 
     def generate_graph_te(self):
         graph = self.manager.generate_graph()
-        graph = nx.convert_node_labels_to_integers(graph,label_attribute='name')
+        graph = nx.convert_node_labels_to_integers(graph,label_attribute='id')
         return graph
+
+    def generate_connection_breakdown(self, connection):
+        breakdown = {}
+        paths = connection[0] #p2p for now
+        cost=connection[1]
+        i_port = None
+        e_port = None
+        for i,j in paths.items():
+            current_link_set=[]
+            for count,link in enumerate(j):
+                node_1 = self.graph.nodes[link[0]]
+                node_2 = self.graph.nodes[link[1]]
+                domain_1 = self.manager.get_domain_name(node_1['id'])
+                domain_2 = self.manager.get_domain_name(node_2['id'])
+                current_link_set.append(link)
+                if domain_1 == domain_2:
+                    current_domain = domain_1
+                    if count==len(j)-1:
+                        breakdown[current_domain]=current_link_set.copy()
+                else:
+                    breakdown[current_domain]=current_link_set.copy()
+                    current_domain=None
+                    current_link_set=[]
+
+        #now starting with the ingress_port
+        first = True
+        i=0
+        domain_breakdown={}
+        for domain, links in breakdown.items():
+            print(i)
+            segment={}
+            if first:
+                first=False
+                last_link=links[-1]
+                n1=self.graph.nodes[last_link[0]]['id']
+                n2=self.graph.nodes[last_link[1]]['id']
+                n1,p1,n2,p2=self.manager.topology.get_port_by_link(n1,n2)
+                i_port=self.connection.ingress_port.to_dict()
+                e_port=p1
+                next_i = p2
+            elif i==len(breakdown)-1:
+                i_port=next_i
+                e_port=self.connection.egress_port.to_dict()
+            else:
+                last_link=links[-1]
+                n1=self.graph.nodes[last_link[0]]['id']
+                n2=self.graph.nodes[last_link[1]]['id']
+                print(last_link[0])
+                print(n1)
+                print(n2)
+                n1,p1,n2,p2=self.manager.topology.get_port_by_link(n1,n2)
+                i_port=next_i
+                e_port=p1
+                next_i=p2
+            segment['ingress_port'] = i_port
+            segment['egress_port'] = e_port
+            domain_breakdown[domain]=segment.copy()
+            i=i+1
+
+        return domain_breakdown

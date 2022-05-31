@@ -16,7 +16,7 @@
         {
           "id": "urn:ogf:network:sdx:port:sax:B1:2",
           "name": "Novi01:2",
-          "node": "urn:ogf:network:sdx:port:sax:B1",
+          "node": "urn:ogf:network:sdx:node:sax:B1",
           "short_name": "B1:2",
           "label_range": [
             "100-200",
@@ -95,7 +95,7 @@
         {
           "id": "urn:ogf:network:sdx:port:sax:B1:4",
           "name": "Novi01:3",
-          "node": "urn:ogf:network:sdx:port:sax:B1",
+          "node": "urn:ogf:network:sdx:node:sax:B1",
           "short_name": "B1:4",
           "label_range": [
             "100-200",
@@ -129,7 +129,7 @@
         {
           "id": "urn:ogf:network:sdx:port:sax:B1:3",
           "name": "Novi01:3",
-          "node": "urn:ogf:network:sdx:port:sax:B1",
+          "node": "urn:ogf:network:sdx:node:sax:B1",
           "short_name": "B1:3",
           "label_range": [
             "100-200",
@@ -197,7 +197,7 @@
         {
           "id": "urn:ogf:network:sdx:port:sax:B1:1",
           "name": "Novi01:1",
-          "node": "urn:ogf:network:sdx:port:sax:B1",
+          "node": "urn:ogf:network:sdx:node:sax:B1",
           "short_name": "B1:1",
           "label_range": [
             "100-200",
@@ -267,7 +267,7 @@
         {
           "id": "urn:ogf:network:sdx:port:sax:B1:1",
           "name": "Novi01:1",
-          "node": "urn:ogf:network:sdx:port:sax:B1",
+          "node": "urn:ogf:network:sdx:node:sax:B1",
           "short_name": "B1:1",
           "label_range": [
             "100-200",
