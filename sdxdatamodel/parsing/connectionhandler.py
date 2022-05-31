@@ -16,6 +16,10 @@ class ConnectionHandler():
         try:
             id = data['id']
             name=data['name']
+            if 'bandwidth_required' in data.keys():
+                bw=data['bandwidth_required']
+            if 'latency_required' in data.keys():
+                la=data['latency_required']
             if 'start_time' in data.keys():
                 start=data['start_time']
             if 'end_time' in data.keys():    
@@ -25,7 +29,7 @@ class ConnectionHandler():
         except KeyError as e:
             raise MissingAttributeException(e.args[0],e.args[0])
 
-        connection=Connection(id=id, name=name, start_time = start, end_time = end, ingress_port = ingress, egress_port = egress)
+        connection=Connection(id=id, name=name, start_time = start, end_time = end, bandwidth=bw, latency=la, ingress_port = ingress, egress_port = egress)
 
         return connection
     

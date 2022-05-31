@@ -58,7 +58,7 @@ class TopologyManager():
             links = topology.get_links()
             for link in links:
                 for port in link.ports:
-                    self.port_list[port] = link
+                    self.port_list[port['id']] = link
         else:
         ## update the version and timestamp to be the latest
             self.update_version(False)
@@ -134,7 +134,7 @@ class TopologyManager():
         for link in links:
             link_dict[link.id] = link
             for port in link.ports:
-                interdomain_port_dict[port]=link
+                interdomain_port_dict[port['id']]=link
 
         #ToDo: raise an warning or exception
         if len(interdomain_port_dict)==0:
@@ -171,14 +171,14 @@ class TopologyManager():
             ports=link.ports
             end_nodes=[]
             for port in ports:
-                node=self.topology.get_node_by_port(port)
+                node=self.topology.get_node_by_port(port['id'])
                 if node is None:
-                    print("This port doesn't belong to any node in the topology, likely an Interdomain port!" + port)
+                    print("This port doesn't belong to any node in the topology, likely an Interdomain port!" + port['id'])
                     inter_domain_link = True
                     break
                 else:
                     end_nodes.append(node)
-                    print("graph node:"+node.id)
+                    #print("graph node:"+node.id)
             if not inter_domain_link:
                 G.add_edge(end_nodes[0].name,end_nodes[1].name)
                 edge = G.edges[end_nodes[0].name,end_nodes[1].name]
@@ -186,6 +186,7 @@ class TopologyManager():
                 edge['latency'] = link.latency
                 edge['bandwidth'] = link.bandwidth
                 edge['residual_bandwidth'] = link.residual_bandwidth
+                edge['weight'] = 1000.0*(1.0/link.residual_bandwidth)
                 #edge['latency'] = link.latency
                 edge['packet_loss'] = link.packet_loss
                 edge['availability'] = link.availability

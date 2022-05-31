@@ -187,7 +187,7 @@ class Link(object):
             self._ports=[]
 
         for port in ports:
-            self._ports.append(port['id'])
+            self._ports.append(port)
         
         return self.ports
     @ports.setter

@@ -7,9 +7,9 @@
     "links": [
       {
         "availability": 56.37376656633328,
-        "residual_bandwidth": 602746.015561422,
+        "residual_bandwidth": 100000,
         "id": "urn:ogf:network:sdx:link:amlight:B1-B2",
-        "latency": 146582.15146899645,
+        "latency": 5,
         "name": "amlight:B1-B2",
         "packet_loss": 59.621339166831824,
         "ports": [
@@ -37,13 +37,13 @@
           }
         ],
         "short_name": "Miami-BocaRaton",
-        "bandwidth": 80083.7389632821
+        "bandwidth": 100000
       },
       {
         "availability": 56.37376656633328,
-        "residual_bandwidth": 602746.015561422,
+        "residual_bandwidth": 100000,
         "id": "urn:ogf:network:sdx:link:amlight:A1-B1",
-        "latency": 146582.15146899645,
+        "latency": 5,
         "name": "amlight:A1-B1",
         "packet_loss": 59.621339166831824,
         "ports": [
@@ -71,13 +71,13 @@
           }
         ],
         "short_name": "redclara-miami",
-        "bandwidth": 80083.7389632821
+        "bandwidth": 100000
       },
       {
         "availability": 56.37376656633328,
-        "residual_bandwidth": 602746.015561422,
+        "residual_bandwidth": 100000,
         "id": "urn:ogf:network:sdx:link:amlight:A1-B2",
-        "latency": 146582.15146899645,
+        "latency": 5,
         "name": "amlight:A1-B2",
         "packet_loss": 59.621339166831824,
         "ports": [
@@ -105,13 +105,13 @@
           }
         ],
         "short_name": "redclara-BocaRaton",
-        "bandwidth": 80083.7389632821
+        "bandwidth": 100000
       },
       {
         "availability": 56.37376656633328,
-        "residual_bandwidth": 602746.015561422,
+        "residual_bandwidth": 100000,
         "id": "urn:ogf:network:sdx:link:nni:Miami-Sanpaolo",
-        "latency": 146582.15146899645,
+        "latency": 10,
         "name": "nni:Miami-Sanpaolo",
         "packet_loss": 59.621339166831824,
         "nni": "True",
@@ -140,13 +140,13 @@
           }
         ],
         "short_name": "Miami-Sanpaolo",
-        "bandwidth": 80083.7389632821
+        "bandwidth": 100000
       },
       {
         "availability": 56.37376656633328,
-        "residual_bandwidth": 602746.015561422,
+        "residual_bandwidth": 100000,
         "id": "urn:ogf:network:sdx:link:nni:BocaRaton-Fortaleza",
-        "latency": 146582.15146899645,
+        "latency": 10,
         "name": "nni:BocaRaton-Fortaleza",
         "packet_loss": 59.621339166831824,
         "nni": "True",
@@ -175,7 +175,7 @@
           }
         ],
         "short_name": "BocaRaton-Fortaleza",
-        "bandwidth": 80083.7389632821
+        "bandwidth": 100000
       }
     ],
     "nodes": [

@@ -19,7 +19,8 @@ TOPOLOGY_AMLIGHT = './tests/data/amlight.json'
 TOPOLOGY_SAX = './tests/data/sax.json'
 TOPOLOGY_ZAOXI = './tests/data/zaoxi.json'
 
-TOPOLOGY_png = "./tests/data/amlight.png"
+TOPOLOGY_png = "./tests/data/sdx.png"
+TOPOLOGY = "./tests/data/sdx.json"
 
 topology_file_list_3 = [TOPOLOGY_AMLIGHT,TOPOLOGY_SAX, TOPOLOGY_ZAOXI]
 topology_file_list_2 = [TOPOLOGY_SAX, TOPOLOGY_ZAOXI]
@@ -40,7 +41,9 @@ class TestTopologyManager(unittest.TestCase):
                     data = json.load(data_file)
                 print("Adding Topology:" + topology_file)
                 self.manager.add_topology(data)
-            
+            with open(TOPOLOGY, 'w') as t_file:
+                json.dump(self.manager.topology.to_dict(), t_file, indent=4)    
+
         except DataModelException as e:
             print(e)
             return False      

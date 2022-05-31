@@ -48,19 +48,28 @@ class Connection(object):
         'quantity': 'quantity',
         'start_time': 'start_time',
         'end_time': 'end_time',
+        'bandwidth': 'float',
+        'latency': 'float',
+        'latency': 'float',
         'status': 'status',
     }
 
-    def __init__(self, id=None, name=None, ingress_port=None, egress_port=None, quantity=None, start_time=None, end_time=None, status=None, complete=False):  # noqa: E501
-        """Connection - a model defined in Swagger"""  # noqa: E501
+    def __init__(self, id=None, name=None, ingress_port=None, egress_port=None, bandwidth=None, latency=None, quantity=None, start_time=None, end_time=None, status=None, complete=False):  # noqa: E501
+
+        self._id = id
+        self._name = name
         self._quantity = None
         self._start_time = None
         self._end_time = None
         self._status = None
-        self._id = id
-        self._name = name
+        self._bandwidth = None,
+        self._latency = None,
         self.set_ingress_port(ingress_port)
         self.set_egress_port(egress_port)
+        if bandwidth is not None:
+            self._bandwidth = bandwidth
+        if latency is not None:
+            self._latency = latency
         if quantity is not None:
             self._quantity = quantity
         if start_time is not None:
@@ -189,6 +198,46 @@ class Connection(object):
         """
 
         self._quantity = quantity
+
+    @property
+    def bandwidth(self):
+        """Gets the quantity of this Connection.  # noqa: E501
+
+
+        :return: The quantity of this Connection.  # noqa: E501
+        :rtype: float
+        """
+        return self._bandwidth
+
+    def set_bandwidth(self, bw):
+        """Sets the bw of this Connection.
+
+
+        :param bw: The bw of this Connection.  # noqa: E501
+        :type: float
+        """
+
+        self._bandwidth = bw
+    
+    @property
+    def latency(self):
+        """Gets the latency of this Connection.  # noqa: E501
+
+
+        :return: The latency of this Connection.  # noqa: E501
+        :rtype: float
+        """
+        return self._latency
+
+    def set_latency(self, latency):
+        """Sets the latency of this Connection.
+
+
+        :param bw: The latency of this Connection.  # noqa: E501
+        :type: float
+        """
+
+        self._latency = latency
 
     @property
     def start_time(self):
