@@ -246,9 +246,9 @@ class Topology(object):
         return None
     def get_port_by_link(self,n1_id,n2_id):
         for x in self.links:
-            print("--------")
-            print(x.ports[0]['node'])
-            print(x.ports[1]['node'])
+            #print("--------")
+            #print(x.ports[0]['node'])
+            #print(x.ports[1]['node'])
             if x.ports[0]['node']==n1_id and x.ports[1]['node']==n2_id:
                 return n1_id,x.ports[0],n2_id,x.ports[1]
             if x.ports[0]['node']==n2_id and x.ports[1]['node']==n1_id:

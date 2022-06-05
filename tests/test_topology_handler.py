@@ -8,7 +8,7 @@ TOPOLOGY_AMLIGHT = './tests/data/amlight.json'
 class TestTopologyHandler(unittest.TestCase):
 
     def setUp(self):
-        self.handler = TopologyHandler(TOPOLOGY_AMLIGHT)  # noqa: E501
+        self.handler = TopologyHandler(TOPOLOGY_AMLIGHT) 
         self.handler.import_topology()
     def tearDown(self):
         pass

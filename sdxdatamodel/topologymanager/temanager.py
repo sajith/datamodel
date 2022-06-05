@@ -62,6 +62,7 @@ class TEManager():
         cost=connection[1]
         i_port = None
         e_port = None
+        print("domain breakdown:")
         for i,j in paths.items():
             current_link_set=[]
             for count,link in enumerate(j):
@@ -70,6 +71,8 @@ class TEManager():
                 domain_1 = self.manager.get_domain_name(node_1['id'])
                 domain_2 = self.manager.get_domain_name(node_2['id'])
                 current_link_set.append(link)
+                print("domain_1:"+domain_1)
+                print("domain_2:"+domain_2)
                 if domain_1 == domain_2:
                     current_domain = domain_1
                     if count==len(j)-1:
@@ -77,8 +80,8 @@ class TEManager():
                 else:
                     breakdown[current_domain]=current_link_set.copy()
                     current_domain=None
-                    current_link_set=[]
-
+                    current_link_set=[]            
+        print(breakdown)
         #now starting with the ingress_port
         first = True
         i=0
