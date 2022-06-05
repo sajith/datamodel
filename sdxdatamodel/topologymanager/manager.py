@@ -79,7 +79,10 @@ class TopologyManager():
 
     def get_domain_name(self,node_id):
         domain_id=None
+        print("len of topology_list:"+str(len(self.topology_list)))
         for id, topology in self.topology_list.items():
+            print(id)
+            print(topology.id)
             if topology.has_node_by_id(node_id):
                 domain_id = id
                 break    
