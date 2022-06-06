@@ -22,7 +22,7 @@ TOPOLOGY_ZAOXI = './tests/data/zaoxi.json'
 TOPOLOGY_png = "./tests/data/sdx.png"
 TOPOLOGY = "./tests/data/sdx.json"
 
-topology_file_list_3 = [TOPOLOGY_AMLIGHT,TOPOLOGY_SAX, TOPOLOGY_ZAOXI]
+topology_file_list_3 = [TOPOLOGY_AMLIGHT,TOPOLOGY_ZAOXI,TOPOLOGY_SAX]
 topology_file_list_2 = [TOPOLOGY_SAX, TOPOLOGY_ZAOXI]
 
 class TestTopologyManager(unittest.TestCase):

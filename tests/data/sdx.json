@@ -9,8 +9,8 @@
         "provisioning_url": null,
         "vendor": null
     },
-    "version": "0.0",
-    "time_stamp": "2000-01-23T04:56:07+00:00",
+    "version": "2.0",
+    "time_stamp": "2022-06-05T11:33:51.585671",
     "nodes": [
         {
             "id": "urn:sdx:node:amlight.net:B1",

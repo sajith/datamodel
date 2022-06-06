@@ -19,9 +19,12 @@ class TopologyHandler():
         self.topology_file = topology_filename
 
     def import_topology(self):
-        with open(self.topology_file, 'r', encoding='utf-8') as data_file:
-            data = json.load(data_file)
-            self.import_topology_data(data)
+        try:
+            with open(self.topology_file, 'r', encoding='utf-8') as data_file:
+                data = json.load(data_file)
+                self.import_topology_data(data)
+        except (IOError, FileNotFoundError) as e:
+            print(e)
 
     def import_topology_data(self, data):
         try:

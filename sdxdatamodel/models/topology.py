@@ -13,6 +13,7 @@
 import pprint
 import re  # noqa: F401
 import six
+import datetime
 
 from sdxdatamodel.parsing.servicehandler import ServiceHandler
 from sdxdatamodel.parsing.nodehandler import NodeHandler
@@ -153,7 +154,8 @@ class Topology(object):
         """
         return self._version
 
-    def set_version(self, version):
+    @version.setter
+    def version(self, version):
         """Sets the version of this Topology.
 
 

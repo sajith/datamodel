@@ -3,6 +3,7 @@ import json
 import copy
 
 import networkx as nx
+from networkx.algorithms import approximation as approx
 
 from sdxdatamodel.models.topology import Topology, SDX_TOPOLOGY_ID_prefix,TOPOLOGY_INITIAL_VERSION
 from sdxdatamodel.models.link import Link
@@ -56,6 +57,22 @@ class TEManager():
         graph = nx.convert_node_labels_to_integers(graph,label_attribute='id')
         return graph
 
+    def graph_node_connectivity(self, source=None, dest=None):
+        conn = approx.node_connectivity(self.graph,source,dest)
+        return conn
+    
+    def requests_connectivity(self, requests):
+        for request in requests:
+            conn = self.graph_node_connectivity(request[0],request[1])
+            print("Request Connectivity: {}, {} = {}".format(
+                request[0],
+                request[1],
+                conn,
+            )
+            )
+        return True
+
+
     def generate_connection_breakdown(self, connection):
         breakdown = {}
         paths = connection[0] #p2p for now
@@ -71,8 +88,6 @@ class TEManager():
                 domain_1 = self.manager.get_domain_name(node_1['id'])
                 domain_2 = self.manager.get_domain_name(node_2['id'])
                 current_link_set.append(link)
-                print("domain_1:"+domain_1)
-                print("domain_2:"+domain_2)
                 if domain_1 == domain_2:
                     current_domain = domain_1
                     if count==len(j)-1:

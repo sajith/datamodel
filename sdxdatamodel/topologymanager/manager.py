@@ -3,6 +3,7 @@ import json
 import copy
 
 import networkx as nx
+import datetime
 
 from sdxdatamodel.models.topology import Topology, SDX_TOPOLOGY_ID_prefix,TOPOLOGY_INITIAL_VERSION
 from sdxdatamodel.models.link import Link
@@ -60,10 +61,6 @@ class TopologyManager():
                 for port in link.ports:
                     self.port_list[port['id']] = link
         else:
-        ## update the version and timestamp to be the latest
-            self.update_version(False)
-            self.update_timestamp()
-
             ##check the inter-domain links first.
             self.num_interdomain_link+=self.inter_domain_check(topology)
             if self.num_interdomain_link==0:
@@ -74,15 +71,15 @@ class TopologyManager():
             ##links
             links = topology.get_links()
             self.topology.add_links(links)
-
+            #version
             self.update_version(False)
+
+        self.update_timestamp()
 
     def get_domain_name(self,node_id):
         domain_id=None
         print("len of topology_list:"+str(len(self.topology_list)))
         for id, topology in self.topology_list.items():
-            print(id)
-            print(topology.id)
             if topology.has_node_by_id(node_id):
                 domain_id = id
                 break    
@@ -90,7 +87,7 @@ class TopologyManager():
 
     def generate_id(self):
         self.topology.set_id(SDX_TOPOLOGY_ID_prefix)
-        self.topology.set_version(TOPOLOGY_INITIAL_VERSION)
+        self.topology.version=TOPOLOGY_INITIAL_VERSION
         return id
     
     def remove_topology(self, topology_id):
@@ -131,11 +128,23 @@ class TopologyManager():
         return self.topology
 
     def update_version(self,sub:bool):
-        [ver, sub_ver] = self.topology.version.split('.')
+        try:
+            [ver, sub_ver] = self.topology.version.split('.')
+        except ValueError:
+            ver=self.topology.version
+            sub_ver='0'
+
         if not sub:
             ver=str(int(ver)+1)
+            sub_ver='0'
         else:
             sub_ver=str(int(sub_ver)+1)
+
+        self.topology.version=ver+"."+sub_ver
+
+    def update_timestamp(self):
+        ct = datetime.datetime.now().isoformat()
+        self.topology.time_stamp=ct
 
     def inter_domain_check(self,topology):
         interdomain_port_dict={}
@@ -163,9 +172,6 @@ class TopologyManager():
 
         return num_interdomain_link
 
-    def update_timestamp(self):
-        pass
-
     def add_domain_service(self):
         pass
 
@@ -184,7 +190,7 @@ class TopologyManager():
             for port in ports:
                 node=self.topology.get_node_by_port(port['id'])
                 if node is None:
-                    print("This port doesn't belong to any node in the topology, likely an Interdomain port!" + port['id'])
+                    print("This port doesn't belong to any node in the topology, likely a Non-SDX port!" + port['id'])
                     inter_domain_link = True
                     break
                 else:
@@ -198,7 +204,6 @@ class TopologyManager():
                 edge['bandwidth'] = link.bandwidth
                 edge['residual_bandwidth'] = link.residual_bandwidth
                 edge['weight'] = 1000.0*(1.0/link.residual_bandwidth)
-                #edge['latency'] = link.latency
                 edge['packet_loss'] = link.packet_loss
                 edge['availability'] = link.availability
 
