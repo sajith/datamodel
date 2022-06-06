@@ -29,7 +29,7 @@ class TestTopologyGRENMLConverter(unittest.TestCase):
             print(self.handler.topology)
             converter = GrenmlConverter(self.handler.topology)
             converter.read_topology()
-            print(converter.get_xml_str)
+            print(converter.get_xml_str())
         except DataModelException as e:
             print(e)
             return False      

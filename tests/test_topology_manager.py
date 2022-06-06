@@ -55,7 +55,7 @@ class TestTopologyManager(unittest.TestCase):
             self.testMergeTopology()
             converter = GrenmlConverter(self.manager.get_topology())
             converter.read_topology()
-            print(converter.get_xml_str)
+            print(converter.get_xml_str())
         except DataModelException as e:
             print(e)
             return False      

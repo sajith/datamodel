@@ -28,7 +28,7 @@ class GrenmlConverter(object):
 
         self.topology_str = self.grenml_manager.write_to_string()
 
-        print(self.topology_str)
+        #print(self.topology_str)
 
     def add_nodes(self,nodes):
         for node in nodes:
