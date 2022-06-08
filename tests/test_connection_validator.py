@@ -7,8 +7,8 @@ from sdxdatamodel.parsing.connectionhandler import ConnectionHandler
 from sdxdatamodel.parsing.exceptions import DataModelException
 from sdxdatamodel.models.connection import Connection
 
-#CONNECTION_P2P = './tests/data/p2p.json'
-CONNECTION_P2P = './tests/data/test_connection.json'
+CONNECTION_P2P = './tests/data/p2p.json'
+#CONNECTION_P2P = './tests/data/test_connection.json'
 
 class TestConnectionValidator(unittest.TestCase):
 
