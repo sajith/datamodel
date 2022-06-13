@@ -110,7 +110,7 @@ class TopologyManager():
         ##links
         links = topology.get_links()
         for link in links:
-            self.topology.remove_links(link.id)
+            self.topology.remove_link(link.id)
 
         ##check the inter-domain links first.
         num_interdomain_link=self.inter_domain_check(topology)
