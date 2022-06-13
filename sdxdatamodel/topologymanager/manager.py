@@ -81,7 +81,7 @@ class TopologyManager():
 
     def get_domain_name(self,node_id):
         domain_id=None
-        print("len of topology_list:"+str(len(self.topology_list)))
+        #print("len of topology_list:"+str(len(self.topology_list)))
         for id, topology in self.topology_list.items():
             if topology.has_node_by_id(node_id):
                 domain_id = id
@@ -100,7 +100,8 @@ class TopologyManager():
 
     def update_topology(self,data):
         #likely adding new inter-domain links
-        topology = self.handler.import_topology_data(data)
+        update_handler = TopologyHandler()
+        topology = update_handler.import_topology_data(data)
         self.topology_list[topology.id] = topology
 
         ##nodes
@@ -110,7 +111,11 @@ class TopologyManager():
         ##links
         links = topology.get_links()
         for link in links:
-            self.topology.remove_link(link.id)
+            if link.nni != True:
+                #print(link.id+";......."+str(link.nni))
+                self.topology.remove_link(link.id)
+                for port in link.ports:
+                    self.port_list.pop(port['id'])
 
         ##check the inter-domain links first.
         num_interdomain_link=self.inter_domain_check(topology)
@@ -165,13 +170,17 @@ class TopologyManager():
 
         #ToDo: raise an warning or exception
         if len(interdomain_port_dict)==0:
+            print("interdomain_port_dict==0")
             return False
 
         #match any ports in the existing topology
         for port_id in  interdomain_port_dict:
+            #print("interdomain_port:")
+            #print(port_id)
             for existing_port, existing_link in self.port_list.items():
+                #print(existing_port)
                 if port_id == existing_port:
-                    print("Interdomain port:" + port_id)
+                    #print("Interdomain port:" + port_id)
                     #remove redundant link between two domains
                     self.topology.remove_link(existing_link.id)   
                     num_interdomain_link=+1

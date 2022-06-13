@@ -55,6 +55,8 @@ class TEManager():
     def generate_graph_te(self):
         graph = self.manager.generate_graph()
         graph = nx.convert_node_labels_to_integers(graph,label_attribute='id')
+        self.graph=graph
+        #print(list(graph.nodes(data=True)))
         return graph
 
     def graph_node_connectivity(self, source=None, dest=None):
@@ -88,8 +90,9 @@ class TEManager():
                 domain_1 = self.manager.get_domain_name(node_1['id'])
                 domain_2 = self.manager.get_domain_name(node_2['id'])
                 current_link_set.append(link)
+                current_domain = domain_1
                 if domain_1 == domain_2:
-                    current_domain = domain_1
+                    #current_domain = domain_1
                     if count==len(j)-1:
                         breakdown[current_domain]=current_link_set.copy()
                 else:
@@ -101,6 +104,7 @@ class TEManager():
         first = True
         i=0
         domain_breakdown={}
+
         for domain, links in breakdown.items():
             segment={}
             if first:

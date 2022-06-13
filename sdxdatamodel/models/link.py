@@ -27,6 +27,7 @@ class Link(object):
         'id': 'str',
         'name': 'str',
         'short_name': 'str',
+        'nni': 'bool',
         'ports': 'list[Port]',
         'bandwidth': 'float',
         'residual_bandwidth': 'float',
@@ -44,6 +45,7 @@ class Link(object):
         'id': 'id',
         'name': 'name',
         'short_name': 'short_name',
+        'nni': 'nni',
         'ports': 'ports',
         'bandwidth': 'bandwidth',
         'residual_bandwidth': 'residual_bandwidth',
@@ -57,11 +59,12 @@ class Link(object):
         'measurement_period': 'measurement_period'
     }
 
-    def __init__(self, id=None, name=None, short_name=None, ports=None, bandwidth=None, residual_bandwidth=None, latency=None, packet_loss=None, availability=None, private_attributes=None, time_stamp=None, measurement_period=None):  # noqa: E501
+    def __init__(self, id=None, name=None, short_name=None, nni=None, ports=None, bandwidth=None, residual_bandwidth=None, latency=None, packet_loss=None, availability=None, private_attributes=None, time_stamp=None, measurement_period=None):  # noqa: E501
         """Link - a model defined in Swagger"""  # noqa: E501
         self._id = None
         self._name = None
         self._short_name = None
+        self._nni = None
         self._ports = None
         self._bandwidth = None
         self._residual_bandwidth = None
@@ -77,6 +80,8 @@ class Link(object):
         self._name = name
         if short_name is not None:
             self._short_name = short_name
+        if nni is not None:
+            self._nni = nni
         if ports is not None:    
             self._ports = self.set_ports(ports)
         if bandwidth is not None:
@@ -162,6 +167,27 @@ class Link(object):
         """
 
         self._short_name = short_name
+
+    @property
+    def nni(self):
+        """Gets the short_name of this Link.  # noqa: E501
+
+
+        :return: The short_name of this Link.  # noqa: E501
+        :rtype: str
+        """
+        return self._nni
+
+    @nni.setter
+    def nni(self, nni):
+        """Sets the short_name of this Link.
+
+
+        :param short_name: The short_name of this Link.  # noqa: E501
+        :type: str
+        """
+
+        self._nni = nni
 
     @property
     def ports(self):

@@ -23,7 +23,7 @@ TOPOLOGY_png = "./tests/data/sdx.png"
 TOPOLOGY = "./tests/data/sdx.json"
 
 topology_file_list_3 = [TOPOLOGY_AMLIGHT,TOPOLOGY_ZAOXI,TOPOLOGY_SAX]
-topology_file_list_2 = [TOPOLOGY_SAX, TOPOLOGY_ZAOXI]
+topology_file_list_update = [TOPOLOGY_ZAOXI]
 
 link_id = "urn:ogf:network:sdx:link:amlight:A1-B2"
 inter_link_id = "urn:ogf:network:sdx:link:nni:Miami-Sanpaolo"
@@ -47,6 +47,27 @@ class TestTopologyManager(unittest.TestCase):
             with open(TOPOLOGY, 'w') as t_file:
                 json.dump(self.manager.topology.to_dict(), t_file, indent=4)    
 
+        except DataModelException as e:
+            print(e)
+            return False      
+        return True
+
+    def testUpdateTopology(self):
+        print("Test Topology Update!")
+        try:
+            self.testMergeTopology()
+            for topology_file in topology_file_list_update:
+                with open(topology_file, 'r', encoding='utf-8') as data_file:
+                    data = json.load(data_file)
+                print("Updating Topology:" + topology_file)
+                self.manager.update_topology(data) 
+
+            with open(TOPOLOGY, 'w') as t_file:
+                json.dump(self.manager.topology.to_dict(), t_file, indent=4)   
+            graph = self.manager.generate_graph()
+            #pos = nx.spring_layout(graph, seed=225)  # Seed for reproducible layout
+            nx.draw(graph,with_labels = True)
+            plt.savefig(TOPOLOGY_png)  
         except DataModelException as e:
             print(e)
             return False      

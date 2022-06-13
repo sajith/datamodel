@@ -179,6 +179,7 @@
       "availability": 56.37376656633328,
       "residual_bandwidth": 100000,
       "id": "urn:ogf:network:sdx:link:nni:Miami-Sanpaolo",
+      "nni": "True",
       "latency": 10,
       "name": "nni:Miami-Sanpaolo",
       "packet_loss": 59.621339166831824,
