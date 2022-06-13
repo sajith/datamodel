@@ -40,5 +40,5 @@ class PortHandler():
             data = json.load(data_file)
             self.port = self.import_port_data(data)
 
-    def get_port():
+    def get_port(self):
         return self.port

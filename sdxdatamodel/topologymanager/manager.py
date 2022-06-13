@@ -41,6 +41,9 @@ class TopologyManager():
     def set_topology(self, topology):  
         self.topology = topology
     
+    def get_topology(self):
+        return self.topology
+    
     def clear_topology(self):
         self.topology=None
         self.topology_list={}
@@ -124,9 +127,6 @@ class TopologyManager():
         self.update_version(True)
         self.update_timestamp()
 
-    def get_topology(self):
-        return self.topology
-
     def update_version(self,sub:bool):
         try:
             [ver, sub_ver] = self.topology.version.split('.')
@@ -134,17 +134,24 @@ class TopologyManager():
             ver=self.topology.version
             sub_ver='0'
 
+        self.topology.version=self.new_version(ver, sub_ver,sub)
+
+        return self.topology.version
+    
+    def new_version(self,ver, sub_ver,sub:bool):
         if not sub:
             ver=str(int(ver)+1)
             sub_ver='0'
         else:
             sub_ver=str(int(sub_ver)+1)
 
-        self.topology.version=ver+"."+sub_ver
+        return ver+"."+sub_ver
 
     def update_timestamp(self):
         ct = datetime.datetime.now().isoformat()
         self.topology.time_stamp=ct
+
+        return ct
 
     def inter_domain_check(self,topology):
         interdomain_port_dict={}
@@ -171,13 +178,6 @@ class TopologyManager():
             self.port_list[port_id] = interdomain_port_dict[port_id]
 
         return num_interdomain_link
-
-    def add_domain_service(self):
-        pass
-
-    #may need to read from a configuration file.    
-    def update_private_properties(self):
-        pass
 
     #adjacent matrix of the graph, in jason?    
     def generate_graph(self):
@@ -209,9 +209,63 @@ class TopologyManager():
 
         return G
 
-
-
     def generate_grenml(self):
         self.converter = GrenmlConverter(self.topology)
 
         return self.converter.read_topology()    
+
+    def add_domain_service(self):
+        pass
+
+    #may need to read from a configuration file.    
+    def update_private_properties(self):
+        pass
+
+    # on performance properties for now
+    def update_link_property(self,link_id,property,value):
+        #1. update the individual topology
+        for id, topology in self.topology_list.items():
+            links = topology.get_links()
+            for link in links:
+                print(link.id + ";" + id)
+                if link.id == link_id:
+                    setattr(link,property,value)
+                    print("updated the link.")
+                    #1.2 need to change the sub_ver of the topology?
+
+        #2. check on the inter-domain link?
+        #3. update the interodamin topology
+        links = self.topology.get_links()
+        for link in links:
+            if link.id == link_id:
+                setattr(link,property,value)
+                print("updated the link.")
+                #2.2 need to change the sub_ver of the topology?
+
+        self.update_version(True)
+        self.update_timestamp()
+        #4. Signal update the (networkx) graph
+
+        # 5. signal Reoptimization of TE? 
+
+    def update_element_property_json(self,data,element, element_id,property,value):
+        elements=data[element]
+        for element in elements:
+            if element['id'] == element_id:
+                element[property] = value
+
+        try:
+            [ver, sub_ver] = data['version'].split('.')
+        except ValueError:
+            ver='0'
+            sub_ver='0'
+
+        data['version'] = self.new_version(ver,sub_ver,True)
+        data['time_stamp'] = datetime.datetime.now().isoformat()
+
+        
+    def update_node_property(self):
+        pass
+
+    def update_port_property(self):
+        pass

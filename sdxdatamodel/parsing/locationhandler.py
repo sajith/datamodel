@@ -33,5 +33,5 @@ class LocationHandler():
             data = json.load(data_file)
             self.location = self.import_location_data(data)
 
-    def get_location():
+    def get_location(self):
         return self.location

@@ -25,6 +25,9 @@ TOPOLOGY = "./tests/data/sdx.json"
 topology_file_list_3 = [TOPOLOGY_AMLIGHT,TOPOLOGY_ZAOXI,TOPOLOGY_SAX]
 topology_file_list_2 = [TOPOLOGY_SAX, TOPOLOGY_ZAOXI]
 
+link_id = "urn:ogf:network:sdx:link:amlight:A1-B2"
+inter_link_id = "urn:ogf:network:sdx:link:nni:Miami-Sanpaolo"
+
 class TestTopologyManager(unittest.TestCase):
 
     def setUp(self):
@@ -73,6 +76,34 @@ class TestTopologyManager(unittest.TestCase):
             print(e)
             return False      
         return True
+
+    def testLinkPropertyUpdate(self):
+        print("Test Topology Link Property Update!")
+        try:
+            self.testMergeTopology()
+            self.manager.update_link_property(link_id,'latency',8)
+            self.manager.update_link_property(inter_link_id,'latency',8)
+            with open(TOPOLOGY, 'w') as t_file:
+                json.dump(self.manager.topology.to_dict(), t_file, indent=4)
+        except DataModelException as e:
+            print(e)
+            return False      
+        return True
+
+    def testLinkPropertyUpdateJson(self):
+        print("Test Topology JSON Link Property Update!")
+        try:
+            with open(TOPOLOGY, 'r', encoding='utf-8') as data_file:
+                data = json.load(data_file)
+                self.manager.update_element_property_json(data,'links',link_id,'latency',20)
+            with open(TOPOLOGY, 'w') as t_file:
+                json.dump(data, t_file, indent=4)
+        except DataModelException as e:
+            print(e)
+            return False      
+        return True
+        
+
 
 if __name__ == '__main__':
     unittest.main()

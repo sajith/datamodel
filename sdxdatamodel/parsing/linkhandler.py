@@ -49,5 +49,5 @@ class LinkHandler():
             data = json.load(data_file)
             self.link = self.import_link_data(data)
 
-    def get_link():
+    def get_link(self):
         return self.link

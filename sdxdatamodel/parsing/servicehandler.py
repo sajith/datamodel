@@ -38,5 +38,5 @@ class ServiceHandler():
             data = json.load(data_file)
             self.service = self.import_service_data(data)
 
-    def get_service():
+    def get_service(self):
         return self.service

@@ -34,5 +34,5 @@ class NodeHandler():
             data = json.load(data_file)
             self.node = self.import_node_data(data)
 
-    def get_node():
+    def get_node(self):
         return self.node
