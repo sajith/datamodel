@@ -20,7 +20,8 @@ TOPOLOGY_SAX = './tests/data/sax.json'
 TOPOLOGY_ZAOXI = './tests/data/zaoxi.json'
 
 TOPOLOGY_png = "./tests/data/sdx.png"
-TOPOLOGY = "./tests/data/sdx.json"
+TOPOLOGY_IN = "./tests/data/sdx.json"
+TOPOLOGY_OUT = "./tests/data/sdx-out.json"
 
 topology_file_list_3 = [TOPOLOGY_AMLIGHT,TOPOLOGY_ZAOXI,TOPOLOGY_SAX]
 topology_file_list_update = [TOPOLOGY_ZAOXI]
@@ -44,7 +45,7 @@ class TestTopologyManager(unittest.TestCase):
                     data = json.load(data_file)
                 print("Adding Topology:" + topology_file)
                 self.manager.add_topology(data)
-            with open(TOPOLOGY, 'w') as t_file:
+            with open(TOPOLOGY_OUT, 'w') as t_file:
                 json.dump(self.manager.topology.to_dict(), t_file, indent=4)    
 
         except DataModelException as e:
@@ -62,7 +63,7 @@ class TestTopologyManager(unittest.TestCase):
                 print("Updating Topology:" + topology_file)
                 self.manager.update_topology(data) 
 
-            with open(TOPOLOGY, 'w') as t_file:
+            with open(TOPOLOGY_OUT, 'w') as t_file:
                 json.dump(self.manager.topology.to_dict(), t_file, indent=4)   
             graph = self.manager.generate_graph()
             #pos = nx.spring_layout(graph, seed=225)  # Seed for reproducible layout
@@ -104,7 +105,7 @@ class TestTopologyManager(unittest.TestCase):
             self.testMergeTopology()
             self.manager.update_link_property(link_id,'latency',8)
             self.manager.update_link_property(inter_link_id,'latency',8)
-            with open(TOPOLOGY, 'w') as t_file:
+            with open(TOPOLOGY_OUT, 'w') as t_file:
                 json.dump(self.manager.topology.to_dict(), t_file, indent=4)
         except DataModelException as e:
             print(e)
@@ -114,10 +115,10 @@ class TestTopologyManager(unittest.TestCase):
     def testLinkPropertyUpdateJson(self):
         print("Test Topology JSON Link Property Update!")
         try:
-            with open(TOPOLOGY, 'r', encoding='utf-8') as data_file:
+            with open(TOPOLOGY_IN, 'r', encoding='utf-8') as data_file:
                 data = json.load(data_file)
                 self.manager.update_element_property_json(data,'links',link_id,'latency',20)
-            with open(TOPOLOGY, 'w') as t_file:
+            with open(TOPOLOGY_OUT, 'w') as t_file:
                 json.dump(data, t_file, indent=4)
         except DataModelException as e:
             print(e)
